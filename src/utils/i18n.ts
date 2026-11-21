@@ -158,7 +158,7 @@ export const UI: Record<
   Lang,
   {
     siteTagline: string;
-    nav: { home: string; news: string; columns: string; about: string };
+    nav: { home: string; news: string; columns: string; culture: string; about: string };
     footer: {
       desc: string;
       privacy: string;
@@ -178,12 +178,14 @@ export const UI: Record<
       all: string;
       news: string;
       columns: string;
+      culture: string;
       read: string;
     };
-    badges: { news: string; column: string; columnFull: string };
+    badges: { news: string; column: string; columnFull: string; culture: string };
     article: {
       backNews: string;
       backColumns: string;
+      backCulture: string;
       summaryPill: string;
       summaryLabel: string;
       takeawaysTitle: string;
@@ -201,12 +203,15 @@ export const UI: Record<
       columnsEyebrow: string;
       columnsTitle: string;
       columnsDesc: string;
+      cultureEyebrow: string;
+      cultureTitle: string;
+      cultureDesc: string;
     };
   }
 > = {
   en: {
     siteTagline: 'Global K-Pop News, Deep-Dive English Columns & Culture — in EN, KR, JP, and ES.',
-    nav: { home: 'Home', news: 'News', columns: 'Columns', about: 'About' },
+    nav: { home: 'Home', news: 'News', columns: 'Columns', culture: 'Culture', about: 'About' },
     footer: {
       desc: 'Independent K-Pop newsroom & cultural criticism. Dedicated SEO editions in English, Korean, Japanese, and Spanish.',
       privacy: 'Privacy Policy',
@@ -226,12 +231,14 @@ export const UI: Record<
       all: 'All',
       news: 'News',
       columns: 'Columns',
+      culture: 'Culture',
       read: 'Read →',
     },
-    badges: { news: 'News', column: 'Column', columnFull: 'English Column' },
+    badges: { news: 'News', column: 'Column', columnFull: 'English Column', culture: 'Culture' },
     article: {
       backNews: '← Back to News',
       backColumns: '← Back to Columns',
+      backCulture: '← Back to Culture',
       summaryPill: 'TL;DR',
       summaryLabel: 'Key Summary',
       takeawaysTitle: 'Key Takeaways',
@@ -249,11 +256,14 @@ export const UI: Record<
       columnsEyebrow: 'English Columns',
       columnsTitle: 'Deep-Dive Essays & Criticism',
       columnsDesc: 'Long-form commentary exploring K-Pop production trends, fandom culture, and global pop aesthetics.',
+      cultureEyebrow: 'Culture & Industry',
+      cultureTitle: 'K-Culture, Mid-Size Labels & Global Impact',
+      cultureDesc: 'Exploring how major and independent K-Pop labels reshape global fashion, Seoul lifestyle, fandom economics, and youth culture.',
     },
   },
   ko: {
     siteTagline: '글로벌 K-POP 뉴스 & 영문 문화 비평 칼럼 — 한국어·영어·일본어·스페인어 지원.',
-    nav: { home: '홈', news: '뉴스', columns: '영문 칼럼', about: '소개' },
+    nav: { home: '홈', news: '뉴스', columns: '영문 칼럼', culture: '문화·산업', about: '소개' },
     footer: {
       desc: '글로벌 팬들을 위한 독립 K-POP 뉴스룸 & 문화 비평 매거진. 영어·한국어·일본어·스페인어 전용 에디션을 제공합니다.',
       privacy: '개인정보처리방침',
@@ -273,12 +283,14 @@ export const UI: Record<
       all: '전체',
       news: '뉴스',
       columns: '영문 칼럼',
+      culture: '문화·산업',
       read: '읽기 →',
     },
-    badges: { news: '뉴스', column: '영문 칼럼', columnFull: '영문 칼럼' },
+    badges: { news: '뉴스', column: '영문 칼럼', columnFull: '영문 칼럼', culture: '문화·산업' },
     article: {
       backNews: '← 뉴스 목록으로',
       backColumns: '← 영문 칼럼 목록으로',
+      backCulture: '← 문화·산업 목록으로',
       summaryPill: 'KR SUMMARY',
       summaryLabel: '핵심 요약',
       takeawaysTitle: '핵심 포인트 (3줄 요약)',
@@ -296,11 +308,14 @@ export const UI: Record<
       columnsEyebrow: '영문 칼럼',
       columnsTitle: '심층 영문 칼럼 & 음악 비평',
       columnsDesc: 'K-POP 사운드 트렌드, 팬덤 문화, 글로벌 음악 산업을 깊이 있게 분석하는 칼럼 아카이브입니다.',
+      cultureEyebrow: '문화·산업 & 중소기획사',
+      cultureTitle: 'K-컬처 파급력 & 중소 레이블 스포트라이트',
+      cultureDesc: '대형 기획사 너머 중소·인디 레이블의 독창적 전략과 K-POP이 글로벌 패션·라이프스타일·팬덤 경제에 끼치는 영향을 탐구합니다.',
     },
   },
   jp: {
     siteTagline: 'グローバルK-POPニュース＆英語カルチャーコラム — 英語・韓国語・日本語・スペイン語対応。',
-    nav: { home: 'ホーム', news: 'ニュース', columns: 'コラム', about: '概要' },
+    nav: { home: 'ホーム', news: 'ニュース', columns: 'コラム', culture: 'カルチャー', about: '概要' },
     footer: {
       desc: 'グローバルファンのための独立系K-POPニュース＆音楽批評メディア。英語・韓国語・日本語・スペイン語の専用版を提供しています。',
       privacy: 'プライバシーポリシー',
@@ -320,12 +335,14 @@ export const UI: Record<
       all: 'すべて',
       news: 'ニュース',
       columns: 'コラム',
+      culture: 'カルチャー',
       read: '読む →',
     },
-    badges: { news: 'ニュース', column: 'コラム', columnFull: '英語コラム' },
+    badges: { news: 'ニュース', column: 'コラム', columnFull: '英語コラム', culture: 'カルチャー' },
     article: {
       backNews: '← ニュース一覧へ戻る',
       backColumns: '← コラム一覧へ戻る',
+      backCulture: '← カルチャー一覧へ戻る',
       summaryPill: 'JP SUMMARY',
       summaryLabel: '記事の要約',
       takeawaysTitle: 'この記事のポイント',
@@ -343,11 +360,14 @@ export const UI: Record<
       columnsEyebrow: '英語コラム',
       columnsTitle: '深掘りコラム＆音楽批評',
       columnsDesc: 'K-POPのサウンドトレンド、ファンダム文化、グローバル音楽シーンを深く読み解くコラム集です。',
+      cultureEyebrow: 'カルチャー＆産業',
+      cultureTitle: 'Kカルチャーの影響力と中小・インディーズの挑戦',
+      cultureDesc: '中小事務所の独創的な戦略や、K-POPが世界のファッション・ライフスタイル・ファンダム経済に与える影響を掘り下げます。',
     },
   },
   es: {
     siteTagline: 'Noticias globales de K-Pop y columnas culturales — en inglés, coreano, japonés y español.',
-    nav: { home: 'Inicio', news: 'Noticias', columns: 'Columnas', about: 'Acerca de' },
+    nav: { home: 'Inicio', news: 'Noticias', columns: 'Columnas', culture: 'Cultura', about: 'Acerca de' },
     footer: {
       desc: 'Medio independiente de noticias y crítica cultural de K-Pop con ediciones dedicadas en inglés, coreano, japonés y español.',
       privacy: 'Privacidad',
@@ -367,12 +387,14 @@ export const UI: Record<
       all: 'Todo',
       news: 'Noticias',
       columns: 'Columnas',
+      culture: 'Cultura',
       read: 'Leer →',
     },
-    badges: { news: 'Noticias', column: 'Columna', columnFull: 'Columna' },
+    badges: { news: 'Noticias', column: 'Columna', columnFull: 'Columna', culture: 'Cultura' },
     article: {
       backNews: '← Volver a Noticias',
       backColumns: '← Volver a Columnas',
+      backCulture: '← Volver a Cultura',
       summaryPill: 'ES SUMMARY',
       summaryLabel: 'Resumen',
       takeawaysTitle: 'Puntos clave',
@@ -390,6 +412,9 @@ export const UI: Record<
       columnsEyebrow: 'Columnas',
       columnsTitle: 'Ensayos y Crítica Cultural',
       columnsDesc: 'Ensayos en profundidad sobre producción musical, cultura fandom y estética global del K-Pop.',
+      cultureEyebrow: 'Cultura e Industria',
+      cultureTitle: 'Sellos independientes, cultura K y su impacto global',
+      cultureDesc: 'Cómo las agencias medianas e independientes y el ecosistema K-Pop transforman la moda, la economía fandom y la cultura juvenil global.',
     },
   },
 };

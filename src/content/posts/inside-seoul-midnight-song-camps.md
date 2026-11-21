@@ -7,7 +7,7 @@ description: "Scandinavian top-liners, Korean lyricists, and bedroom producers c
 descriptionKo: "북유럽 톱라이너, 한국 작사가, 그리고 신예 프로듀서들이 강남의 스튜디오에 모여 국경 없는 팝을 빚어내는 현장을 조명합니다."
 descriptionJp: "北欧のトップライナー、韓国の作詞家、若手プロデューサーがソウルのスタジオに集い、国境を越えるポップを生み出す現場を追います。"
 descriptionEs: "Compositores nórdicos, letristas coreanos y productores emergentes colaboran en estudios de Seúl para crear pop sin fronteras."
-category: "column"
+category: "culture"
 pubDate: 2026-11-15
 author: "Claire Yoon"
 readTime: "6 min read"

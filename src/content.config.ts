@@ -17,7 +17,7 @@ const posts = defineCollection({
     descriptionKo: z.string(),
     descriptionJp: z.string().optional(),
     descriptionEs: z.string().optional(),
-    category: z.enum(['news', 'column']),
+    category: z.enum(['news', 'column', 'culture']),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
     author: z.string().default('KPOP LIVES Editorial'),

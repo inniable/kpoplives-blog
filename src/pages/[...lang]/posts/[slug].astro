@@ -84,9 +84,9 @@ const jsonLdList: Array<Record<string, unknown>> = [
       {
         '@type': 'ListItem',
         position: 2,
-        name: data.category === 'news' ? t.nav.news : t.nav.columns,
+        name: data.category === 'news' ? t.nav.news : data.category === 'culture' ? t.nav.culture : t.nav.columns,
         item: new URL(
-          localizePath(lang, data.category === 'news' ? '/news' : '/columns'),
+          localizePath(lang, data.category === 'news' ? '/news' : data.category === 'culture' ? '/culture' : '/columns'),
           site
         ).toString(),
       },
@@ -143,15 +143,15 @@ const langLinks: Array<{ code: Lang; label: string }> = [
   <article class="article-wrapper">
     <header class="article-header container">
       <a
-        href={localizePath(lang, data.category === 'news' ? '/news' : '/columns')}
+        href={localizePath(lang, data.category === 'news' ? '/news' : data.category === 'culture' ? '/culture' : '/columns')}
         class="back-link"
       >
-        {data.category === 'news' ? t.article.backNews : t.article.backColumns}
+        {data.category === 'news' ? t.article.backNews : data.category === 'culture' ? t.article.backCulture : t.article.backColumns}
       </a>
 
       <div class="article-badges">
         <span class:list={['badge', `badge--${data.category}`]}>
-          {data.category === 'news' ? t.badges.news : t.badges.columnFull}
+          {data.category === 'news' ? t.badges.news : data.category === 'culture' ? t.badges.culture : t.badges.columnFull}
         </span>
         {data.tags.map((tag) => (
           <span class="tag-chip">#{tag}</span>

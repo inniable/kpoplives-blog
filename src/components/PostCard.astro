@@ -36,7 +36,7 @@ const t = UI[lang];
       />
       <div class="card-media-overlay"></div>
       <span class:list={['badge', `badge--${data.category}`, 'card-badge']}>
-        {data.category === 'news' ? t.badges.news : t.badges.column}
+        {data.category === 'news' ? t.badges.news : data.category === 'culture' ? t.badges.culture : t.badges.column}
       </span>
     </div>
 
@@ -88,6 +88,11 @@ const t = UI[lang];
   .post-card--column:hover {
     border-color: rgba(0, 240, 255, 0.55);
     box-shadow: 0 18px 40px -16px var(--accent-cyan-glow);
+  }
+
+  .post-card--culture:hover {
+    border-color: rgba(192, 132, 252, 0.58);
+    box-shadow: 0 18px 40px -16px rgba(157, 78, 221, 0.32);
   }
 
   .card-link {
@@ -191,5 +196,9 @@ const t = UI[lang];
 
   .post-card--news .read-more {
     color: var(--accent-pink);
+  }
+
+  .post-card--culture .read-more {
+    color: #d8a6ff;
   }
 </style>

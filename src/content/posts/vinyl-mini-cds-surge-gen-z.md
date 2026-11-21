@@ -7,7 +7,7 @@ description: "Limited-edition colored LPs, NFC keyring albums, and collectible z
 descriptionKo: "한정판 컬러 바이닐(LP), NFC 키링 앨범, 아트워크 진(Zine) 등 새로운 형태의 실물 음반이 Z세대 팬덤의 소장 문화를 재정의하고 있습니다."
 descriptionJp: "限定カラーレコードやNFCキーリング型アルバム、アートZineなど、新しいフィジカル盤がZ世代の所有文化を再定義しています。"
 descriptionEs: "Vinilos de colores de edición limitada, álbumes llavero NFC y fanzines coleccionables redefinen el formato físico en el K-Pop."
-category: "news"
+category: "culture"
 pubDate: 2026-11-12
 author: "KPOP LIVES Desk"
 readTime: "4 min read"
