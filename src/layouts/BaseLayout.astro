@@ -16,6 +16,8 @@ const {
 } = Astro.props;
 
 const fullTitle = title === 'KPOP LIVES' ? 'KPOP LIVES — Global K-Pop News & English Columns' : `${title} | KPOP LIVES`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = new URL(image, Astro.site).toString();
 ---
 
 <!doctype html>
@@ -24,10 +26,13 @@ const fullTitle = title === 'KPOP LIVES' ? 'KPOP LIVES — Global K-Pop News & E
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="KPOP LIVES RSS" href="/rss.xml" />
     <title>{fullTitle}</title>
