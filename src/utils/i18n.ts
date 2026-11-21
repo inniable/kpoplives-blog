@@ -212,7 +212,7 @@ export const UI: Record<
       privacy: 'Privacy Policy',
       terms: 'Copyright & Terms',
       contact: 'Contact',
-      guide: 'Editorial Guide',
+      guide: 'About',
     },
     home: {
       onAir: 'ON AIR',
@@ -253,13 +253,13 @@ export const UI: Record<
   },
   ko: {
     siteTagline: '글로벌 K-POP 뉴스 & 영문 문화 비평 칼럼 — 한국어·영어·일본어·스페인어 지원.',
-    nav: { home: '홈', news: '뉴스', columns: '영문 칼럼', about: '소개 & 작성법' },
+    nav: { home: '홈', news: '뉴스', columns: '영문 칼럼', about: '소개' },
     footer: {
       desc: '글로벌 팬들을 위한 독립 K-POP 뉴스룸 & 문화 비평 매거진. 영어·한국어·일본어·스페인어 전용 에디션을 제공합니다.',
       privacy: '개인정보처리방침',
       terms: '저작권 및 이용약관',
       contact: '문의하기',
-      guide: '작성 가이드',
+      guide: '소개',
     },
     home: {
       onAir: '최신 이슈',
@@ -300,13 +300,13 @@ export const UI: Record<
   },
   jp: {
     siteTagline: 'グローバルK-POPニュース＆英語カルチャーコラム — 英語・韓国語・日本語・スペイン語対応。',
-    nav: { home: 'ホーム', news: 'ニュース', columns: 'コラム', about: '概要・投稿' },
+    nav: { home: 'ホーム', news: 'ニュース', columns: 'コラム', about: '概要' },
     footer: {
       desc: 'グローバルファンのための独立系K-POPニュース＆音楽批評メディア。英語・韓国語・日本語・スペイン語の専用版を提供しています。',
       privacy: 'プライバシーポリシー',
       terms: '著作権・利用規約',
       contact: 'お問い合わせ',
-      guide: '編集ガイド',
+      guide: '概要',
     },
     home: {
       onAir: '最新トピック',
@@ -353,7 +353,7 @@ export const UI: Record<
       privacy: 'Privacidad',
       terms: 'Derechos y Términos',
       contact: 'Contacto',
-      guide: 'Guía editorial',
+      guide: 'Acerca de',
     },
     home: {
       onAir: 'EN VIVO',
