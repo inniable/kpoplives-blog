@@ -1,0 +1,84 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+
+const newsPosts = (await getCollection('posts', ({ data }) => data.category === 'news')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title="K-Pop News">
+  <section class="archive-section">
+    <div class="container">
+      <div class="archive-header">
+        <span class="badge badge--news">
+          <span class="lang-en">News Desk</span>
+          <span class="lang-ko">K-POP 뉴스</span>
+          <span class="lang-jp">K-POPニュース</span>
+          <span class="lang-es">Noticias K-Pop</span>
+        </span>
+        <h1 class="archive-title">
+          <span class="lang-en">Breaking News & Comebacks</span>
+          <span class="lang-ko">최신 K-POP 소식 & 컴백 뉴스</span>
+          <span class="lang-jp">最新K-POPニュース＆カムバック情報</span>
+          <span class="lang-es">Últimas Noticias y Comebacks</span>
+        </h1>
+        <p class="archive-desc">
+          <span class="lang-en">Fast, curated updates on world tours, album drops, chart milestones, and industry shifts.</span>
+          <span class="lang-ko">월드 투어, 새 앨범 발매, 글로벌 차트 기록 등 꼭 알아야 할 K-POP 소식을 빠르게 전합니다.</span>
+          <span class="lang-jp">ワールドツアー、新譜リリース、グローバルチャート記録など注目のK-POPニュースをいち早くお届けします。</span>
+          <span class="lang-es">Actualizaciones rápidas sobre giras mundiales, lanzamientos, récords en listas y tendencias de la industria.</span>
+        </p>
+      </div>
+
+      <div class="posts-grid">
+        {newsPosts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .archive-section {
+    padding: 56px 0 24px;
+  }
+
+  .archive-header {
+    max-width: 680px;
+    margin-bottom: 40px;
+  }
+
+  .archive-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    margin: 14px 0 12px;
+    letter-spacing: -0.025em;
+  }
+
+  .archive-desc {
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 980px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

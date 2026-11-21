@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About & Writing Guide">
+  <section class="about-section container">
+    <div class="about-header">
+      <span class="section-eyebrow">ABOUT KPOP LIVES</span>
+      <h1 class="about-title">
+        <span class="lang-en">Independent K-Pop Journalism, Built for Markdown.</span>
+        <span class="lang-ko">마크다운으로 간편하게 발행하는 4개 국어 K-POP 블로그</span>
+        <span class="lang-jp">Markdownで手軽に公開できる4言語対応K-POPブログ</span>
+        <span class="lang-es">Periodismo K-Pop en Markdown con soporte en 4 idiomas.</span>
+      </h1>
+      <p class="about-lead">
+        <span class="lang-en">
+          KPOP LIVES blends breaking industry news with thoughtful English cultural criticism—paired with instant Korean, Japanese, and Spanish summaries or full translations.
+        </span>
+        <span class="lang-ko">
+          KPOP LIVES는 글로벌 독자를 위한 영문 K-POP 뉴스와 심층 칼럼을 다루며, 한국어·일본어·스페인어 요약 및 전문 번역 전환 기능을 기본 제공합니다.
+        </span>
+        <span class="lang-jp">
+          KPOP LIVESは英語のK-POPニュースとカルチャーコラムを中心に、韓国語・日本語・スペイン語の要約と全文翻訳の切り替えに対応しています。
+        </span>
+        <span class="lang-es">
+          KPOP LIVES combina noticias de última hora y crítica cultural en inglés, con cambio instantáneo a coreano, japonés y español.
+        </span>
+      </p>
+    </div>
+
+    <div class="guide-card prose">
+      <div class="lang-en">
+        <h2>How to Publish a New Article</h2>
+        <p>
+          Create a new <code>.md</code> file inside <code>src/content/posts/</code>. Use <code>&lt;!-- ko --&gt;</code>, <code>&lt;!-- jp --&gt;</code>, and <code>&lt;!-- es --&gt;</code> dividers to include full translations in any language:
+        </p>
+      </div>
+      <div class="lang-ko">
+        <h2>새 글(뉴스 / 영문 칼럼) 발행하는 방법</h2>
+        <p>
+          <code>src/content/posts/</code> 폴더 안에 새로운 <code>.md</code> 파일을 추가하세요. <code>&lt;!-- ko --&gt;</code>, <code>&lt;!-- jp --&gt;</code>, <code>&lt;!-- es --&gt;</code> 구분선을 넣으면 각 언어별 전문 번역이 자동으로 분리됩니다.
+        </p>
+      </div>
+      <div class="lang-jp">
+        <h2>新しい記事の公開方法</h2>
+        <p>
+          <code>src/content/posts/</code> フォルダに <code>.md</code> ファイルを作成し、<code>&lt;!-- ko --&gt;</code>・<code>&lt;!-- jp --&gt;</code>・<code>&lt;!-- es --&gt;</code> で区切るだけで多言語記事が自動生成されます。
+        </p>
+      </div>
+      <div class="lang-es">
+        <h2>Cómo publicar un nuevo artículo</h2>
+        <p>
+          Crea un archivo <code>.md</code> en <code>src/content/posts/</code> y utiliza los separadores <code>&lt;!-- ko --&gt;</code>, <code>&lt;!-- jp --&gt;</code> y <code>&lt;!-- es --&gt;</code> para añadir traducciones completas.
+        </p>
+      </div>
+
+      <pre><code>---
+title: "Your English Headline Here"
+titleKo: "한국어 제목"
+titleJp: "日本語タイトル"
+titleEs: "Titular en español"
+description: "Short English summary."
+descriptionKo: "한국어 한 줄 요약"
+descriptionJp: "日本語の短い要約"
+descriptionEs: "Resumen corto en español"
+category: "column" # "news" or "column"
+pubDate: 2026-11-21
+author: "Your Name"
+tags: ["Comeback", "5th-Gen"]
+coverImage: "/images/cover-5th-gen.jpg"
+summaryKo: "한국어 핵심 요약"
+summaryJp: "日本語の要約"
+summaryEs: "Resumen en español"
+---
+
+Full English article here...
+
+&lt;!-- ko --&gt;
+한국어 전문 번역 (선택 사항)
+
+&lt;!-- jp --&gt;
+日本語全文翻訳（任意）
+
+&lt;!-- es --&gt;
+Traducción completa al español (opcional)</code></pre>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-section {
+    padding: 56px 0 24px;
+    max-width: 860px;
+  }
+
+  .about-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    line-height: 1.15;
+    margin: 10px 0 16px;
+    letter-spacing: -0.025em;
+  }
+
+  .about-lead {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+  }
+
+  .guide-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+
+  .guide-card h2 {
+    margin-top: 0;
+  }
+</style>

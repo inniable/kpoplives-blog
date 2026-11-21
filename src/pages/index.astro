@@ -1,0 +1,500 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+
+const allPosts = (await getCollection('posts')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const featuredPost = allPosts.find((p) => p.data.featured) ?? allPosts[0];
+const allTags = Array.from(new Set(allPosts.flatMap((p) => p.data.tags))).slice(0, 8);
+---
+
+<BaseLayout title="KPOP LIVES">
+  <!-- Live Ticker Strip -->
+  <div class="ticker-bar">
+    <div class="container ticker-inner">
+      <span class="ticker-label">
+        <span class="pulse-dot"></span>
+        <span class="lang-en">ON AIR</span>
+        <span class="lang-ko">최신 이슈</span>
+        <span class="lang-jp">最新トピック</span>
+        <span class="lang-es">EN VIVO</span>
+      </span>
+      <div class="ticker-items">
+        {allPosts.slice(0, 3).map((post) => (
+          <a href={`/posts/${post.id}`} class="ticker-link">
+            <span class="lang-en">{post.data.title}</span>
+            <span class="lang-ko">{post.data.titleKo}</span>
+            <span class="lang-jp">{post.data.titleJp || post.data.title}</span>
+            <span class="lang-es">{post.data.titleEs || post.data.title}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-intro">
+        <span class="section-eyebrow">
+          <span class="lang-en">GLOBAL K-POP NEWSROOM & ENGLISH COLUMNS</span>
+          <span class="lang-ko">글로벌 K-POP 뉴스룸 & 영문 칼럼</span>
+          <span class="lang-jp">グローバルK-POPニュース＆英語コラム</span>
+          <span class="lang-es">NOTICIAS GLOBALES DE K-POP Y COLUMNAS</span>
+        </span>
+        <h1 class="hero-headline">
+          <span class="lang-en">
+            Where K-Pop Sound Meets <span class="gradient-text">Sharp Criticism.</span>
+          </span>
+          <span class="lang-ko">
+            K-POP의 오늘을 기록하는 <span class="gradient-text">트렌디 영문 칼럼.</span>
+          </span>
+          <span class="lang-jp">
+            K-POPの最前線を切り取る <span class="gradient-text">英語カルチャーコラム。</span>
+          </span>
+          <span class="lang-es">
+            Donde el sonido K-Pop se une a la <span class="gradient-text">crítica cultural.</span>
+          </span>
+        </h1>
+      </div>
+
+      {featuredPost && (
+        <a href={`/posts/${featuredPost.id}`} class="featured-card">
+          <div class="featured-media">
+            <img src={featuredPost.data.coverImage} alt={featuredPost.data.title} />
+            <div class="featured-gradient"></div>
+          </div>
+          <div class="featured-content">
+            <div class="featured-badges">
+              <span class="badge badge--featured">
+                <span class="lang-en">Featured</span>
+                <span class="lang-ko">추천 아티클</span>
+                <span class="lang-jp">注目記事</span>
+                <span class="lang-es">Destacado</span>
+              </span>
+              <span class:list={['badge', `badge--${featuredPost.data.category}`]}>
+                {featuredPost.data.category === 'news' ? (
+                  <>
+                    <span class="lang-en">News</span>
+                    <span class="lang-ko">뉴스</span>
+                    <span class="lang-jp">ニュース</span>
+                    <span class="lang-es">Noticias</span>
+                  </>
+                ) : (
+                  <>
+                    <span class="lang-en">Column</span>
+                    <span class="lang-ko">영문 칼럼</span>
+                    <span class="lang-jp">コラム</span>
+                    <span class="lang-es">Columna</span>
+                  </>
+                )}
+              </span>
+            </div>
+
+            <h2 class="featured-title">
+              <span class="lang-en">{featuredPost.data.title}</span>
+              <span class="lang-ko">{featuredPost.data.titleKo}</span>
+              <span class="lang-jp">{featuredPost.data.titleJp || featuredPost.data.title}</span>
+              <span class="lang-es">{featuredPost.data.titleEs || featuredPost.data.title}</span>
+            </h2>
+
+            <p class="featured-desc">
+              <span class="lang-en">{featuredPost.data.description}</span>
+              <span class="lang-ko">{featuredPost.data.descriptionKo}</span>
+              <span class="lang-jp">{featuredPost.data.descriptionJp || featuredPost.data.description}</span>
+              <span class="lang-es">{featuredPost.data.descriptionEs || featuredPost.data.description}</span>
+            </p>
+
+            <div class="featured-meta">
+              <span>{featuredPost.data.author}</span>
+              <span>•</span>
+              <span>
+                <span class="lang-en">{featuredPost.data.readTime}</span>
+                <span class="lang-ko">{featuredPost.data.readTimeKo}</span>
+                <span class="lang-jp">{featuredPost.data.readTimeJp}</span>
+                <span class="lang-es">{featuredPost.data.readTimeEs}</span>
+              </span>
+              <span class="featured-cta">
+                <span class="lang-en">Read Story →</span>
+                <span class="lang-ko">기사 읽기 →</span>
+                <span class="lang-jp">記事を読む →</span>
+                <span class="lang-es">Leer artículo →</span>
+              </span>
+            </div>
+          </div>
+        </a>
+      )}
+    </div>
+  </section>
+
+  <!-- Latest Feed with Interactive Filter -->
+  <section class="feed-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">
+            <span class="lang-en">LATEST DISPATCHES</span>
+            <span class="lang-ko">최신 뉴스 & 칼럼</span>
+            <span class="lang-jp">最新ニュース＆コラム</span>
+            <span class="lang-es">ÚLTIMAS PUBLICACIONES</span>
+          </span>
+          <h2 class="section-title">
+            <span class="lang-en">Fresh From Seoul & Beyond</span>
+            <span class="lang-ko">지금 주목해야 할 이야기</span>
+            <span class="lang-jp">ソウルから世界へ、注目のストーリー</span>
+            <span class="lang-es">Lo más reciente desde Seúl</span>
+          </h2>
+        </div>
+
+        <div class="filter-bar" role="group" aria-label="Filter stories">
+          <button type="button" class="filter-pill is-active" data-filter="all">
+            <span class="lang-en">All</span>
+            <span class="lang-ko">전체</span>
+            <span class="lang-jp">すべて</span>
+            <span class="lang-es">Todo</span>
+          </button>
+          <button type="button" class="filter-pill" data-filter="news">
+            <span class="lang-en">News</span>
+            <span class="lang-ko">뉴스</span>
+            <span class="lang-jp">ニュース</span>
+            <span class="lang-es">Noticias</span>
+          </button>
+          <button type="button" class="filter-pill" data-filter="column">
+            <span class="lang-en">Columns</span>
+            <span class="lang-ko">영문 칼럼</span>
+            <span class="lang-jp">コラム</span>
+            <span class="lang-es">Columnas</span>
+          </button>
+        </div>
+      </div>
+
+      {allTags.length > 0 && (
+        <div class="tag-strip">
+          {allTags.map((tag) => (
+            <button type="button" class="tag-filter-btn" data-tag-filter={tag.toLowerCase()}>
+              #{tag}
+            </button>
+          ))}
+        </div>
+      )}
+
+      <div class="posts-grid" id="posts-grid">
+        {allPosts.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const filterBtns = document.querySelectorAll('[data-filter]');
+  const tagBtns = document.querySelectorAll('[data-tag-filter]');
+  const cards = document.querySelectorAll('#posts-grid .post-card');
+
+  let activeCategory = 'all';
+  let activeTag = '';
+
+  function applyFilters() {
+    cards.forEach((card) => {
+      const el = card as HTMLElement;
+      const cat = el.dataset.category || '';
+      const tags = (el.dataset.tags || '').split(',');
+      const matchCat = activeCategory === 'all' || cat === activeCategory;
+      const matchTag = !activeTag || tags.includes(activeTag);
+      el.style.display = matchCat && matchTag ? '' : 'none';
+    });
+  }
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      activeCategory = (btn as HTMLElement).dataset.filter || 'all';
+      filterBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
+      applyFilters();
+    });
+  });
+
+  tagBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const clicked = (btn as HTMLElement).dataset.tagFilter || '';
+      activeTag = activeTag === clicked ? '' : clicked;
+      tagBtns.forEach((b) =>
+        b.classList.toggle('is-active', (b as HTMLElement).dataset.tagFilter === activeTag)
+      );
+      applyFilters();
+    });
+  });
+</script>
+
+<style>
+  .ticker-bar {
+    background: rgba(255, 46, 147, 0.07);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 10px 0;
+  }
+
+  .ticker-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  .ticker-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--accent-pink);
+    white-space: nowrap;
+  }
+
+  .pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-pink);
+    box-shadow: 0 0 10px var(--accent-pink);
+    animation: pulse 1.8s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  .ticker-items {
+    display: flex;
+    gap: 28px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+  }
+
+  .ticker-items::-webkit-scrollbar {
+    display: none;
+  }
+
+  .ticker-link {
+    white-space: nowrap;
+    transition: color var(--transition);
+  }
+
+  .ticker-link:hover {
+    color: var(--accent-cyan);
+  }
+
+  .hero-section {
+    padding: 48px 0 36px;
+  }
+
+  .hero-intro {
+    margin-bottom: 28px;
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.6vw, 3.35rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    max-width: 780px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .featured-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+  }
+
+  .featured-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 240, 255, 0.45);
+    box-shadow: 0 24px 56px -20px rgba(0, 240, 255, 0.25);
+  }
+
+  .featured-media {
+    position: relative;
+    min-height: 360px;
+    overflow: hidden;
+  }
+
+  .featured-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .featured-card:hover .featured-media img {
+    transform: scale(1.04);
+  }
+
+  .featured-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 55%, var(--bg-surface) 100%);
+  }
+
+  .featured-content {
+    padding: 36px 36px 34px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .featured-badges {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .featured-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 2.5vw, 2.05rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+
+  .featured-desc {
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    margin-bottom: 24px;
+  }
+
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding-top: 18px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .featured-cta {
+    margin-left: auto;
+    color: var(--accent-cyan);
+    font-weight: 600;
+  }
+
+  .feed-section {
+    padding: 36px 0 24px;
+  }
+
+  .filter-bar {
+    display: inline-flex;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .filter-pill {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .filter-pill:hover {
+    color: var(--text-primary);
+  }
+
+  .filter-pill.is-active {
+    background: var(--text-primary);
+    color: var(--bg-base);
+  }
+
+  .tag-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 26px;
+  }
+
+  .tag-filter-btn {
+    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .tag-filter-btn:hover {
+    border-color: var(--accent-cyan);
+    color: var(--text-primary);
+  }
+
+  .tag-filter-btn.is-active {
+    background: rgba(0, 240, 255, 0.14);
+    border-color: var(--accent-cyan);
+    color: #4df6ff;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 980px) {
+    .featured-card {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-media {
+      min-height: 260px;
+    }
+
+    .featured-gradient {
+      background: linear-gradient(180deg, transparent 50%, var(--bg-surface) 100%);
+    }
+
+    .featured-content {
+      padding: 24px;
+    }
+
+    .posts-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
