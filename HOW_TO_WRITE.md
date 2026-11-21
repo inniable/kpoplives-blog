@@ -56,7 +56,22 @@ summaryEs: "ES 모드 상단에 표시될 스페인어 핵심 요약 (선택)"
 
 > **참고:** 특정 언어의 전문 번역 구분선(`<!-- jp -->` 등)을 생략해도 문제없습니다. 해당 언어 모드에서는 상단 요약 박스(있을 경우)와 함께 영문 원문이 자동으로 표시됩니다.
 
-## 3. 4개 국어 자동 번역 스크립트 사용하기 (현지 매거진 수준)
+## 3. 실시간 K-POP 리서치 & 초안 자동 생성 (`npm run draft`)
+
+최신 뉴스를 Google 검색으로 바로 찾아 SEO/GEO 규격의 영문 초안(`.md`)까지 자동 생성할 수 있습니다.
+
+```bash
+# 오늘의 최신 K-POP 핫이슈 TOP 5 브리핑 받기
+npm run draft -- --briefing
+
+# 특정 주제로 실시간 검색 + 영문 칼럼 초안(.md) 자동 생성
+npm run draft -- "5th-gen K-Pop girl groups Billboard trends" --type column
+
+# 초안 생성 + 4개 국어(KR/JP/ES) 자동 번역까지 한 번에 실행
+npm run draft -- "BTS 2026 world tour news" --type news --translate
+```
+
+## 4. 4개 국어 자동 번역 스크립트 사용하기 (현지 매거진 수준)
 
 영문 초안만 작성한 뒤 아래 명령어를 실행하면 **K-POP 전문 용어집 + 언어별 현지 에디터 페르소나 + 2단계 원어민 윤문**을 거쳐 `KR / JP / ES` 제목·요약·본문이 자동으로 `.md` 파일에 채워집니다.
 
