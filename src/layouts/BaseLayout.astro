@@ -2,85 +2,134 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import {
+  type Lang,
+  HTML_LANG,
+  OG_LOCALE,
+  UI,
+  getAlternateUrls,
+  localizePath,
+} from '../utils/i18n';
 
 interface Props {
   title: string;
   description?: string;
   image?: string;
+  lang?: Lang;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>;
 }
 
 const {
   title,
-  description = 'Global K-Pop News, Deep-Dive English Columns & Culture — available in EN, KR, JP, and ES.',
-  image = '/images/cover-5th-gen.jpg',
+  lang = 'en',
+  description = UI[lang].siteTagline,
+  image = '/images/cover-5th-gen.webp',
+  type = 'website',
+  jsonLd,
 } = Astro.props;
 
-const fullTitle = title === 'KPOP LIVES' ? 'KPOP LIVES — Global K-Pop News & English Columns' : `${title} | KPOP LIVES`;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
-const ogImageUrl = new URL(image, Astro.site).toString();
+const site = Astro.site ?? new URL('https://kpoplives-blog.jane2036.workers.dev');
+const fullTitle =
+  title === 'KPOP LIVES'
+    ? `KPOP LIVES — ${UI[lang].home.eyebrow}`
+    : `${title} | KPOP LIVES`;
+
+const canonicalUrl = new URL(Astro.url.pathname, site).toString();
+const ogImageUrl = new URL(image, site).toString();
+const alternates = getAlternateUrls(Astro.url.pathname, site);
+const xDefaultHref = alternates.find((a) => a.lang === 'en')?.href ?? canonicalUrl;
+
+const defaultWebsiteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'KPOP LIVES',
+  url: new URL(localizePath(lang, '/'), site).toString(),
+  inLanguage: HTML_LANG[lang],
+  description: UI[lang].siteTagline,
+};
+
+const structuredDataList = jsonLd
+  ? Array.isArray(jsonLd)
+    ? jsonLd
+    : [jsonLd]
+  : [defaultWebsiteLd];
+
+const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
 ---
 
 <!doctype html>
-<html lang="en" data-lang="en">
+<html lang={HTML_LANG[lang]} data-lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href={canonicalUrl} />
+
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={xDefaultHref} />
+
+    <meta property="og:site_name" content="KPOP LIVES" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content={OG_LOCALE[lang]} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="KPOP LIVES RSS" href="/rss.xml" />
     <title>{fullTitle}</title>
-    <script is:inline>
-      (function () {
-        try {
-          const valid = ['en', 'ko', 'jp', 'es'];
-          const saved = localStorage.getItem('kpoplives-lang');
-          if (saved && valid.includes(saved)) {
-            document.documentElement.setAttribute('data-lang', saved);
-            document.documentElement.setAttribute('lang', saved === 'jp' ? 'ja' : saved);
-          }
-        } catch (e) {}
-      })();
-    </script>
+
+    {structuredDataList.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
+
+    {adsenseClient && (
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+        crossorigin="anonymous"
+      ></script>
+    )}
   </head>
   <body>
-    <Header />
+    <Header lang={lang} />
     <main>
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
+
     <script is:inline>
-      window.setKpopLang = function (lang) {
-        const valid = ['en', 'ko', 'jp', 'es'];
-        if (!valid.includes(lang)) return;
-        document.documentElement.setAttribute('data-lang', lang);
-        document.documentElement.setAttribute('lang', lang === 'jp' ? 'ja' : lang);
-        try {
-          localStorage.setItem('kpoplives-lang', lang);
-        } catch (e) {}
-        document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
-          const active = btn.getAttribute('data-lang-btn') === lang;
-          btn.classList.toggle('is-active', active);
-          btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-        });
-      };
+      // Lite YouTube Embed activator (zero heavy iframe loaded until user clicks)
+      document.addEventListener('click', (e) => {
+        const trigger = e.target.closest('.lite-yt');
+        if (!trigger || trigger.classList.contains('is-loaded')) return;
+        const id = trigger.getAttribute('data-yt-id');
+        const title = trigger.getAttribute('data-yt-title') || 'YouTube Video';
+        if (!id) return;
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+        iframe.title = title;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        trigger.innerHTML = '';
+        trigger.appendChild(iframe);
+        trigger.classList.add('is-loaded');
+      });
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const current = document.documentElement.getAttribute('data-lang') || 'en';
-        window.setKpopLang(current);
-
-        document.querySelectorAll('[data-lang-btn]').forEach((btn) => {
-          btn.addEventListener('click', () => {
-            const target = btn.getAttribute('data-lang-btn');
-            if (target) window.setKpopLang(target);
-          });
-        });
+      document.addEventListener('keydown', (e) => {
+        if ((e.key === 'Enter' || e.key === ' ') && document.activeElement?.classList.contains('lite-yt')) {
+          e.preventDefault();
+          document.activeElement.click();
+        }
       });
     </script>
   </body>

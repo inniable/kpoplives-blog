@@ -1,0 +1,28 @@
+---
+interface Props {
+  videoId: string;
+  title?: string;
+}
+
+const { videoId, title = 'Official K-Pop Video' } = Astro.props;
+---
+
+<div
+  class="lite-yt"
+  data-yt-id={videoId}
+  data-yt-title={title}
+  role="button"
+  tabindex="0"
+  aria-label={`Play YouTube video: ${title}`}
+>
+  <img
+    src={`https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`}
+    alt={title}
+    loading="lazy"
+    decoding="async"
+    width="480"
+    height="360"
+  />
+  <span class="lite-yt-play" aria-hidden="true">▶</span>
+  <span class="lite-yt-badge">YouTube</span>
+</div>

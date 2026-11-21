@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { type Lang, LANG_STATIC_PATHS, UI } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return LANG_STATIC_PATHS;
+}
+
+const { lang } = Astro.props as { lang: Lang };
+const t = UI[lang];
+
+const newsPosts = (await getCollection('posts', ({ data }) => data.category === 'news')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout title={t.archive.newsTitle} description={t.archive.newsDesc} lang={lang}>
+  <section class="archive-section">
+    <div class="container">
+      <div class="archive-header">
+        <span class="badge badge--news">{t.archive.newsEyebrow}</span>
+        <h1 class="archive-title">{t.archive.newsTitle}</h1>
+        <p class="archive-desc">{t.archive.newsDesc}</p>
+      </div>
+
+      <div class="posts-grid">
+        {newsPosts.map((post) => (
+          <PostCard post={post} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .archive-section {
+    padding: 56px 0 24px;
+  }
+
+  .archive-header {
+    max-width: 680px;
+    margin-bottom: 40px;
+  }
+
+  .archive-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.15;
+    margin: 14px 0 12px;
+    letter-spacing: -0.025em;
+  }
+
+  .archive-desc {
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 980px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

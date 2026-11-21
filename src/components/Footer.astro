@@ -1,4 +1,12 @@
 ---
+import { type Lang, UI, localizePath } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = UI[lang];
 const year = new Date().getFullYear();
 ---
 
@@ -6,46 +14,31 @@ const year = new Date().getFullYear();
   <div class="container footer-inner">
     <div class="footer-brand">
       <div class="footer-logo">KPOP<span>LIVES</span></div>
-      <p class="footer-desc lang-en">
-        Independent K-Pop newsroom & English cultural criticism. Available in English, Korean, Japanese, and Spanish.
-      </p>
-      <p class="footer-desc lang-ko">
-        글로벌 팬들을 위한 K-POP 뉴스룸 & 영문 문화 비평 칼럼 블로그. 영어·한국어·일본어·스페인어 번역을 지원합니다.
-      </p>
-      <p class="footer-desc lang-jp">
-        グローバルファンのためのK-POPニュース＆英語カルチャーコラム。英語・韓国語・日本語・スペイン語に対応しています。
-      </p>
-      <p class="footer-desc lang-es">
-        Noticias independientes de K-Pop y columnas culturales en inglés, con soporte en coreano, japonés y español.
-      </p>
+      <p class="footer-desc">{t.footer.desc}</p>
     </div>
 
-    <div class="footer-links">
-      <a href="/news">
-        <span class="lang-en">News</span>
-        <span class="lang-ko">뉴스</span>
-        <span class="lang-jp">ニュース</span>
-        <span class="lang-es">Noticias</span>
-      </a>
-      <a href="/columns">
-        <span class="lang-en">English Columns</span>
-        <span class="lang-ko">영문 칼럼</span>
-        <span class="lang-jp">コラム</span>
-        <span class="lang-es">Columnas</span>
-      </a>
-      <a href="/about">
-        <span class="lang-en">Publishing Guide</span>
-        <span class="lang-ko">글 작성 가이드</span>
-        <span class="lang-jp">投稿ガイド</span>
-        <span class="lang-es">Guía editorial</span>
-      </a>
-      <a href="/rss.xml">RSS</a>
+    <div class="footer-columns">
+      <div class="footer-col">
+        <a href={localizePath(lang, '/news')}>{t.nav.news}</a>
+        <a href={localizePath(lang, '/columns')}>{t.nav.columns}</a>
+        <a href={localizePath(lang, '/about')}>{t.footer.guide}</a>
+      </div>
+      <div class="footer-col">
+        <a href={localizePath(lang, '/privacy')}>{t.footer.privacy}</a>
+        <a href={localizePath(lang, '/terms')}>{t.footer.terms}</a>
+        <a href={localizePath(lang, '/contact')}>{t.footer.contact}</a>
+      </div>
+      <div class="footer-col">
+        <a href="/rss.xml">RSS</a>
+        <a href="/sitemap-index.xml">Sitemap</a>
+        <a href="/llms.txt">llms.txt</a>
+      </div>
     </div>
   </div>
 
   <div class="container footer-bottom">
     <span>© {year} KPOP LIVES. All rights reserved.</span>
-    <span class="footer-tech">Powered by Astro & Markdown</span>
+    <span class="footer-tech">Astro • Cloudflare Workers • EN / KR / JP / ES</span>
   </div>
 </footer>
 
@@ -61,7 +54,7 @@ const year = new Date().getFullYear();
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 32px;
+    gap: 36px;
     flex-wrap: wrap;
     padding-bottom: 36px;
     border-bottom: 1px solid var(--border-subtle);
@@ -81,21 +74,27 @@ const year = new Date().getFullYear();
   }
 
   .footer-desc {
-    max-width: 440px;
+    max-width: 400px;
     color: var(--text-secondary);
     font-size: 0.92rem;
   }
 
-  .footer-links {
+  .footer-columns {
     display: flex;
-    gap: 22px;
+    gap: 44px;
     flex-wrap: wrap;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     font-size: 0.9rem;
     font-weight: 500;
     color: var(--text-secondary);
   }
 
-  .footer-links a:hover {
+  .footer-col a:hover {
     color: var(--accent-cyan);
   }
 

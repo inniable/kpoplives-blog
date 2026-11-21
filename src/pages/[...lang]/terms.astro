@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type Lang, LANG_STATIC_PATHS } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return LANG_STATIC_PATHS;
+}
+
+const { lang } = Astro.props as { lang: Lang };
+
+const titles: Record<Lang, string> = {
+  en: 'Copyright, DMCA & Terms of Use',
+  ko: '저작권 정책(DMCA) 및 이용약관',
+  jp: '著作権ポリシー（DMCA）・利用規約',
+  es: 'Derechos de Autor (DMCA) y Términos',
+};
+---
+
+<BaseLayout title={titles[lang]} lang={lang}>
+  <section class="legal-section container">
+    <span class="section-eyebrow">COPYRIGHT &amp; EDITORIAL STANDARDS</span>
+    <h1 class="legal-title">{titles[lang]}</h1>
+
+    <div class="legal-card prose">
+      {lang === 'ko' ? (
+        <>
+          <h2>1. 오리지널 콘텐츠 저작권</h2>
+          <p>KPOP LIVES에 게시된 모든 영문·한국어·일본어·스페인어 칼럼, 비평, 자체 제작 아트워크의 저작권은 KPOP LIVES에 있습니다. 출처 링크를 명시한 짧은 인용 외 무단 전재 및 재배포를 금합니다.</p>
+
+          <h2>2. K-POP 공식 미디어 및 임베드 원칙</h2>
+          <p>본 블로그는 저작권을 존중하며, 유료 팬클럽 콘텐츠나 무단 크롤링 언론사 사진을 사용하지 않습니다. 아티스트의 뮤직비디오·티저·공식 발표는 <strong>YouTube 및 공식 SNS의 합법적 임베드 기능</strong>과 <strong>자체 제작 에디토리얼 비주얼</strong>만을 활용합니다.</p>
+
+          <h2>3. DMCA / 저작권 권리 침해 신고</h2>
+          <p>게시물 중 권리 침해가 우려되는 자료가 발견될 경우 <a href="/ko/contact">문의하기 페이지</a>로 URL과 권리 증빙을 보내주시면 확인 즉시(영업일 기준 48시간 이내) 신속히 삭제 또는 수정 조치합니다.</p>
+        </>
+      ) : lang === 'jp' ? (
+        <>
+          <h2>1. オリジナル記事の著作権</h2>
+          <p>KPOP LIVESに掲載されているすべてのコラム・記事・オリジナルビジュアルの著作権はKPOP LIVESに帰属します。</p>
+
+          <h2>2. 公式メディアの埋め込みポリシー</h2>
+          <p>当メディアは著作権を尊重し、公式YouTubeチャンネルや公式SNSの正当な埋め込み機能、および独自制作のビジュアルのみを使用しています。</p>
+
+          <h2>3. 権利侵害に関するお問い合わせ（DMCA）</h2>
+          <p>掲載内容に著作権上の懸念がある場合は、<a href="/jp/contact">お問い合わせページ</a>よりご連絡ください。確認次第、速やかに対応いたします。</p>
+        </>
+      ) : lang === 'es' ? (
+        <>
+          <h2>1. Derechos del contenido original</h2>
+          <p>Todos los artículos, columnas y recursos visuales originales publicados en KPOP LIVES son propiedad de KPOP LIVES.</p>
+
+          <h2>2. Política de medios oficiales e incrustaciones</h2>
+          <p>Respetamos estrictamente los derechos de autor. Utilizamos únicamente incrustaciones oficiales de YouTube y redes sociales verificadas, además de ilustraciones editoriales originales.</p>
+
+          <h2>3. Solicitudes DMCA</h2>
+          <p>Si eres titular de derechos y deseas solicitar la revisión o retirada de algún contenido, contáctanos a través de nuestra <a href="/es/contact">página de contacto</a>.</p>
+        </>
+      ) : (
+        <>
+          <h2>1. Original Editorial Content</h2>
+          <p>All articles, cultural essays, translations, and original editorial illustrations published on KPOP LIVES are the intellectual property of KPOP LIVES. Brief excerpts may be quoted with a direct canonical link back to the original article.</p>
+
+          <h2>2. Official Media &amp; Fair Use Embed Policy</h2>
+          <p>KPOP LIVES strictly respects copyright holders and entertainment agencies. We do not re-host unauthorized press photography or paid fanclub content. Music videos, teasers, and official artist updates are featured exclusively through <strong>official platform embeds (YouTube, X, Instagram)</strong> and original editorial artwork.</p>
+
+          <h2>3. DMCA Takedown Notice</h2>
+          <p>If you are a copyright owner and believe any material on this site infringes your rights, please notify us via our <a href="/contact">Contact page</a> with the exact URL and proof of ownership. Valid requests are addressed promptly within 48 business hours.</p>
+        </>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-section {
+    padding: 56px 0 24px;
+    max-width: 820px;
+  }
+  .legal-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    margin: 10px 0 24px;
+  }
+  .legal-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+  .legal-card h2:first-child {
+    margin-top: 0;
+  }
+</style>

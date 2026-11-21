@@ -15,7 +15,7 @@ readTimeKo: "6분 소요"
 readTimeJp: "読了目安 6分"
 readTimeEs: "6 min de lectura"
 tags: ["Songwriting", "Seoul", "Behind the Scenes"]
-coverImage: "/images/cover-seoul-studio.jpg"
+coverImage: "/images/cover-seoul-studio.webp"
 featured: false
 summaryKo: "서울 강남과 성수 일대에서 열리는 K-POP 송캠프는 스웨덴·영국·미국·한국의 창작자들이 한 방에 모여 48시간 만에 글로벌 히트곡의 원형을 만들어내는 용광로입니다. 본 칼럼은 다국적 협업 시스템이 어떻게 K-POP만의 독보적인 사운드 문법을 완성하는지 탐구합니다."
 summaryJp: "ソウル・江南や聖水エリアで開かれるK-POPソングキャンプは、北欧・英米・韓国のクリエイターが集結し、わずか48時間で世界基準のヒット曲の原型を生み出す実験室です。国境を越えた共作システムの魅力に迫ります。"

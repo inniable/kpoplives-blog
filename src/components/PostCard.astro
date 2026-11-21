@@ -1,36 +1,22 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import {
+  type Lang,
+  UI,
+  formatDate,
+  getPostLocalized,
+  localizePath,
+} from '../utils/i18n';
 
 interface Props {
   post: CollectionEntry<'posts'>;
+  lang: Lang;
 }
 
-const { post } = Astro.props;
+const { post, lang } = Astro.props;
 const { data, id } = post;
-
-const formattedDateEn = data.pubDate.toLocaleDateString('en-US', {
-  month: 'short',
-  day: 'numeric',
-  year: 'numeric',
-});
-
-const formattedDateKo = data.pubDate.toLocaleDateString('ko-KR', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
-
-const formattedDateJp = data.pubDate.toLocaleDateString('ja-JP', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
-
-const formattedDateEs = data.pubDate.toLocaleDateString('es-ES', {
-  day: 'numeric',
-  month: 'short',
-  year: 'numeric',
-});
+const loc = getPostLocalized(post, lang);
+const t = UI[lang];
 ---
 
 <article
@@ -38,59 +24,35 @@ const formattedDateEs = data.pubDate.toLocaleDateString('es-ES', {
   data-category={data.category}
   data-tags={data.tags.join(',').toLowerCase()}
 >
-  <a href={`/posts/${id}`} class="card-link">
+  <a href={localizePath(lang, `/posts/${id}`)} class="card-link">
     <div class="card-media">
-      <img src={data.coverImage} alt={data.title} loading="lazy" />
+      <img
+        src={data.coverImage}
+        alt={data.coverAlt || loc.title}
+        width="640"
+        height="400"
+        loading="lazy"
+        decoding="async"
+      />
       <div class="card-media-overlay"></div>
       <span class:list={['badge', `badge--${data.category}`, 'card-badge']}>
-        {data.category === 'news' ? (
-          <>
-            <span class="lang-en">News</span>
-            <span class="lang-ko">뉴스</span>
-            <span class="lang-jp">ニュース</span>
-            <span class="lang-es">Noticias</span>
-          </>
-        ) : (
-          <>
-            <span class="lang-en">Column</span>
-            <span class="lang-ko">영문 칼럼</span>
-            <span class="lang-jp">コラム</span>
-            <span class="lang-es">Columna</span>
-          </>
-        )}
+        {data.category === 'news' ? t.badges.news : t.badges.column}
       </span>
+      {data.youtubeId && <span class="video-pill" title="Includes official video">▶ Video</span>}
     </div>
 
     <div class="card-body">
       <div class="card-meta">
         <time datetime={data.pubDate.toISOString()}>
-          <span class="lang-en">{formattedDateEn}</span>
-          <span class="lang-ko">{formattedDateKo}</span>
-          <span class="lang-jp">{formattedDateJp}</span>
-          <span class="lang-es">{formattedDateEs}</span>
+          {formatDate(data.pubDate, lang, true)}
         </time>
         <span class="dot">•</span>
-        <span>
-          <span class="lang-en">{data.readTime}</span>
-          <span class="lang-ko">{data.readTimeKo}</span>
-          <span class="lang-jp">{data.readTimeJp}</span>
-          <span class="lang-es">{data.readTimeEs}</span>
-        </span>
+        <span>{loc.readTime}</span>
       </div>
 
-      <h3 class="card-title">
-        <span class="lang-en">{data.title}</span>
-        <span class="lang-ko">{data.titleKo}</span>
-        <span class="lang-jp">{data.titleJp || data.title}</span>
-        <span class="lang-es">{data.titleEs || data.title}</span>
-      </h3>
+      <h3 class="card-title">{loc.title}</h3>
 
-      <p class="card-excerpt">
-        <span class="lang-en">{data.description}</span>
-        <span class="lang-ko">{data.descriptionKo}</span>
-        <span class="lang-jp">{data.descriptionJp || data.description}</span>
-        <span class="lang-es">{data.descriptionEs || data.description}</span>
-      </p>
+      <p class="card-excerpt">{loc.description}</p>
 
       <div class="card-footer">
         <div class="card-tags">
@@ -98,12 +60,7 @@ const formattedDateEs = data.pubDate.toLocaleDateString('es-ES', {
             <span class="tag-chip">#{tag}</span>
           ))}
         </div>
-        <span class="read-more">
-          <span class="lang-en">Read →</span>
-          <span class="lang-ko">읽기 →</span>
-          <span class="lang-jp">読む →</span>
-          <span class="lang-es">Leer →</span>
-        </span>
+        <span class="read-more">{t.home.read}</span>
       </div>
     </div>
   </a>
@@ -168,6 +125,21 @@ const formattedDateEs = data.pubDate.toLocaleDateString('es-ES', {
     position: absolute;
     top: 14px;
     left: 14px;
+    backdrop-filter: blur(8px);
+  }
+
+  .video-pill {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    background: rgba(7, 7, 12, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #ffffff;
     backdrop-filter: blur(8px);
   }
 

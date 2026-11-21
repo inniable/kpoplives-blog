@@ -15,7 +15,7 @@ readTimeKo: "3분 소요"
 readTimeJp: "読了目安 3分"
 readTimeEs: "3 min de lectura"
 tags: ["World Tour", "Live", "Industry"]
-coverImage: "/images/cover-world-tour.jpg"
+coverImage: "/images/cover-world-tour.webp"
 featured: false
 summaryKo: "2026년 하반기부터 이어지는 글로벌 투어 라인업에서 남미와 유럽의 스타디움 공연 비중이 역대 최고 수준으로 늘어났습니다. 특히 단순 아레나 투어를 넘어 현지 페스티벌 헤드라이너와 단독 스타디움 2~3회차 매진이 새로운 표준으로 자리 잡고 있습니다."
 summaryJp: "2026年後半からのグローバルツアーでは、南米および欧州でのスタジアム公演比率が過去最高水準に拡大しています。現地フェスでのヘッドライナー出演と単独スタジアム複数公演の組み合わせが新たなスタンダードとなっています。"

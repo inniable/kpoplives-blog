@@ -15,11 +15,25 @@ readTimeKo: "5분 소요"
 readTimeJp: "読了目安 5分"
 readTimeEs: "5 min de lectura"
 tags: ["5th-Gen", "Production", "Editorial"]
-coverImage: "/images/cover-5th-gen.jpg"
+coverImage: "/images/cover-5th-gen.webp"
 featured: true
+summaryEn: "Fifth-generation K-Pop groups are trading explosive maximalist drops for sleek UK garage grooves, under-three-minute runtimes, and whispered hooks engineered for short-form replay."
 summaryKo: "최근 5세대 K-POP 신인 그룹들은 과거의 웅장하고 폭발적인 사운드 대신, UK 개러지·드럼 앤 베이스 기반의 가볍고 세련된 이지리스닝 트랙으로 글로벌 리스너를 사로잡고 있습니다. 본 칼럼에서는 스트리밍 반복 재생과 숏폼 생태계가 K-POP 프로덕션 문법을 어떻게 진화시켰는지 짚어봅니다."
 summaryJp: "第5世代K-POPグループは、かつての重厚なマキシマリズムから離れ、UKガラージやイージーリスニングを基調とした洗練されたミニマルサウンドで世界のチャートを席巻しています。本コラムでは、ショート動画とストリーミング時代がK-POPのプロダクションをどう変えたのかを分析します。"
 summaryEs: "Los grupos de la quinta generación del K-Pop están dejando atrás el maximalismo sonoro para conquistar las listas globales con ritmos de UK garage y melodías minimalistas. Esta columna analiza cómo el streaming y el formato corto transformaron la producción en Seúl."
+keyTakeaways:
+  - "5th-gen K-Pop trades maximalist bass drops for UK garage percussion and anti-drop choruses."
+  - "Tracks under 3 minutes maximize replay value on streaming algorithms and 20-second short-form feeds."
+  - "Seoul's A&R teams fuse Y2K analog nostalgia with hi-fi vocal mastering."
+keyTakeawaysKo:
+  - "5세대 K-POP은 강렬한 드롭 대신 UK 개러지와 안티 드롭(Anti-drop) 코러스로 리스너의 피로도를 낮췄습니다."
+  - "3분 미만의 컴팩트한 러닝타임으로 스트리밍 반복 재생과 숏폼 확산에 최적화되었습니다."
+  - "Y2K 아날로그 노스탤지어에 서울 특유의 정교한 하이파이 마스터링을 결합한 것이 핵심입니다."
+faqs:
+  - q: "What defines 5th-generation K-Pop music production?"
+    a: "5th-generation K-Pop is defined by minimalist easy-listening production, UK garage and Jersey club rhythms, anti-drop choruses, and compact under-three-minute track lengths."
+  - q: "Why did K-Pop shift away from maximalist drops?"
+    a: "Short-form video platforms and algorithmic streaming playlists reward songs with effortless replayability rather than jarring tempo switches."
 ---
 
 For nearly a decade, K-Pop's calling card on the global stage was **maximalism**. Songs moved like roller coasters—shifting tempos mid-bridge, stacking brass stabs over trap hi-hats, and exploding into anthemic dance breaks built for stadium cameras.

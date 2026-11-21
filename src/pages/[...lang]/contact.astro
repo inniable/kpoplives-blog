@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type Lang, LANG_STATIC_PATHS } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return LANG_STATIC_PATHS;
+}
+
+const { lang } = Astro.props as { lang: Lang };
+
+const titles: Record<Lang, string> = {
+  en: 'Contact & Editorial Policy',
+  ko: '문의하기 & 편집 원칙',
+  jp: 'お問い合わせ・編集方針',
+  es: 'Contacto y Política Editorial',
+};
+---
+
+<BaseLayout title={titles[lang]} lang={lang}>
+  <section class="legal-section container">
+    <span class="section-eyebrow">CONTACT &amp; E-E-A-T</span>
+    <h1 class="legal-title">{titles[lang]}</h1>
+
+    <div class="legal-card prose">
+      {lang === 'ko' ? (
+        <>
+          <h2>편집부 연락처</h2>
+          <p>보도자료 제보, 칼럼 기고, 광고·협업 문의 및 저작권 관련 요청은 아래 이메일로 연락해 주세요.</p>
+          <p><strong>Email:</strong> <a href="mailto:jane2036@naver.com">jane2036@naver.com</a></p>
+
+          <h2>편집 및 팩트체크 원칙</h2>
+          <ul>
+            <li>모든 뉴스 기사는 공식 기획사 발표, 공식 채널(YouTube/Weverse/X), 공인 차트 데이터를 기반으로 작성합니다.</li>
+            <li>영문 칼럼은 음악 프로덕션과 문화적 맥락을 깊이 있게 분석하며, 한국어·일본어·스페인어 에디션은 각 언어권 에디토리얼 기준에 맞춰 현지화합니다.</li>
+            <li>사실 관계 정정이 필요한 경우 기사 상단에 수정일(Updated)을 명시하고 투명하게 반영합니다.</li>
+          </ul>
+        </>
+      ) : lang === 'jp' ? (
+        <>
+          <h2>編集部へのお問い合わせ</h2>
+          <p>プレスリリース、寄稿のご相談、広告・タイアップ、著作権に関するご連絡は以下のメールアドレスまでお願いいたします。</p>
+          <p><strong>Email:</strong> <a href="mailto:jane2036@naver.com">jane2036@naver.com</a></p>
+
+          <h2>編集・ファクトチェック方針</h2>
+          <ul>
+            <li>すべてのニュースは公式発表・公式チャンネル・公認チャートデータに基づいて執筆します。</li>
+            <li>訂正が必要な場合は記事内に更新日を明記し、速やかに修正します。</li>
+          </ul>
+        </>
+      ) : lang === 'es' ? (
+        <>
+          <h2>Contacto editorial</h2>
+          <p>Para comunicados de prensa, colaboraciones, publicidad o consultas sobre derechos de autor, escríbenos a:</p>
+          <p><strong>Email:</strong> <a href="mailto:jane2036@naver.com">jane2036@naver.com</a></p>
+
+          <h2>Estándares editoriales</h2>
+          <ul>
+            <li>Todas las noticias se verifican contra anuncios oficiales de agencias, canales verificados y listas oficiales.</li>
+            <li>Las correcciones se reflejan de forma transparente con la fecha de actualización visible en cada artículo.</li>
+          </ul>
+        </>
+      ) : (
+        <>
+          <h2>Editorial &amp; Press Inquiries</h2>
+          <p>For press releases, column pitches, advertising partnerships, or copyright/DMCA inquiries, please contact our editorial desk:</p>
+          <p><strong>Email:</strong> <a href="mailto:jane2036@naver.com">jane2036@naver.com</a></p>
+
+          <h2>Editorial Independence &amp; Fact-Checking Policy</h2>
+          <ul>
+            <li>All news dispatches are verified against official agency statements, verified artist channels, and recognized chart providers.</li>
+            <li>Our columns reflect independent cultural and musical criticism, localized natively across English, Korean, Japanese, and Spanish editions.</li>
+            <li>When corrections or updates are made, articles clearly display an updated timestamp.</li>
+          </ul>
+        </>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-section {
+    padding: 56px 0 24px;
+    max-width: 820px;
+  }
+  .legal-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    margin: 10px 0 24px;
+  }
+  .legal-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+  .legal-card h2:first-child {
+    margin-top: 0;
+  }
+</style>

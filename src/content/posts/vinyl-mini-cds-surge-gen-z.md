@@ -15,7 +15,7 @@ readTimeKo: "4분 소요"
 readTimeJp: "読了目安 4分"
 readTimeEs: "4 min de lectura"
 tags: ["Vinyl", "Fandom", "Charts"]
-coverImage: "/images/cover-global-charts.jpg"
+coverImage: "/images/cover-global-charts.webp"
 featured: false
 summaryKo: "디지털 스트리밍 시대에도 불구하고 K-POP 한정판 컬러 LP와 NFC 키링 앨범, 미니 CD 플레이어 패키지 판매량이 전년 대비 크게 증가했습니다. 팬들에게 실물 음반은 단순한 음악 재생 매체를 넘어 패션 액세서리이자 아티스트의 세계관을 소유하는 아트 오브제로 진화하고 있습니다. (본 기사는 영문 원문과 다국어 요약으로 제공됩니다.)"
 summaryJp: "ストリーミング全盛の時代でありながら、K-POPの限定カラーLPやNFCキーリングアルバム、ミニCDプレイヤー付きパッケージの売上が大幅に伸びています。ファンにとってフィジカル盤は音楽媒体を超えたファッション＆アートアイテムへと進化しています。"

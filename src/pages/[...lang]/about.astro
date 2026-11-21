@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type Lang, LANG_STATIC_PATHS } from '../../utils/i18n';
+
+export function getStaticPaths() {
+  return LANG_STATIC_PATHS;
+}
+
+const { lang } = Astro.props as { lang: Lang };
+
+const copy: Record<Lang, { title: string; lead: string; h2: string; desc: string }> = {
+  en: {
+    title: 'Independent K-Pop Journalism, Built for Global Discovery.',
+    lead: 'KPOP LIVES publishes original English K-Pop news and cultural criticism, paired with dedicated SEO editions in Korean, Japanese, and Spanish.',
+    h2: 'How to Publish & Embed Media',
+    desc: 'Create a single Markdown (.md) file in src/content/posts/, run npm run translate, and push to GitHub. Use ::youtube[VIDEO_ID] for zero-lag official YouTube embeds.',
+  },
+  ko: {
+    title: '글로벌 독자와 AI 검색을 위한 독립 K-POP 매거진',
+    lead: 'KPOP LIVES는 영문 메인 K-POP 뉴스와 심층 칼럼을 다루며, 한국어·일본어·스페인어 전용 URL 에디션과 현지 매거진 수준 번역을 제공합니다.',
+    h2: '새 글 작성 & 초경량 YouTube 영상 삽입법',
+    desc: 'src/content/posts/에 .md 파일 1개만 작성하고 npm run translate 후 GitHub에 푸시하면 4개 언어 페이지가 자동 배포됩니다. 본문에 ::youtube[영상ID]를 넣으면 초경량 유튜브 플레이어가 자동 생성됩니다.',
+  },
+  jp: {
+    title: '世界とAI検索に向けて発信する独立系K-POPメディア',
+    lead: 'KPOP LIVESは英語のK-POPニュースと音楽批評を中心に、韓国語・日本語・スペイン語の専用エディションを展開しています。',
+    h2: '記事公開と軽量YouTube埋め込み',
+    desc: 'src/content/posts/にMarkdownファイルを1つ作成し、npm run translate後にGitHubへプッシュするだけで4言語版が自動公開されます。',
+  },
+  es: {
+    title: 'Periodismo independiente de K-Pop en 4 idiomas.',
+    lead: 'KPOP LIVES publica noticias y crítica cultural de K-Pop con ediciones dedicadas en inglés, coreano, japonés y español.',
+    h2: 'Cómo publicar e insertar videos oficiales',
+    desc: 'Crea un archivo .md en src/content/posts/, ejecuta npm run translate y haz push a GitHub. Usa ::youtube[VIDEO_ID] para videos ligeros de YouTube.',
+  },
+};
+
+const c = copy[lang];
+---
+
+<BaseLayout title="About & Editorial Guide" description={c.lead} lang={lang}>
+  <section class="page-section container">
+    <span class="section-eyebrow">ABOUT KPOP LIVES</span>
+    <h1 class="page-title">{c.title}</h1>
+    <p class="page-lead">{c.lead}</p>
+
+    <div class="card prose">
+      <h2>{c.h2}</h2>
+      <p>{c.desc}</p>
+
+      <pre><code>---
+title: "Your English Headline"
+titleKo: "한국어 제목"
+category: "column"
+pubDate: 2026-11-21
+author: "Hana Park"
+coverImage: "/images/cover-5th-gen.webp"
+youtubeId: "dQw4w9WgXcQ" # Optional official MV spotlight
+summaryKo: "한국어 핵심 요약"
+keyTakeaways:
+  - "First key takeaway for GEO & AI citations"
+  - "Second data-backed insight"
+faqs:
+  - q: "What defines 5th-gen K-Pop production?"
+    a: "Compact under-3-minute runtimes, UK garage percussion, and anti-drop hooks."
+---
+
+Your English column here...
+
+::youtube[VIDEO_ID_HERE Official Music Video]</code></pre>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-section {
+    padding: 56px 0 24px;
+    max-width: 860px;
+  }
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    line-height: 1.15;
+    margin: 10px 0 16px;
+  }
+  .page-lead {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 36px;
+  }
+  .card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 32px;
+  }
+  .card h2 {
+    margin-top: 0;
+  }
+</style>

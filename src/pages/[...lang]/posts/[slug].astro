@@ -1,0 +1,573 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/PostCard.astro';
+import LiteYouTube from '../../../components/LiteYouTube.astro';
+import AdSlot from '../../../components/AdSlot.astro';
+import {
+  type Lang,
+  HTML_LANG,
+  LANG_STATIC_PATHS,
+  UI,
+  extractLangHtml,
+  formatDate,
+  getPostLocalized,
+  localizePath,
+} from '../../../utils/i18n';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return LANG_STATIC_PATHS.flatMap(({ params, props }) =>
+    posts.map((post) => ({
+      params: { lang: params.lang, slug: post.id },
+      props: { lang: props.lang, post },
+    }))
+  );
+}
+
+const { post, lang } = Astro.props as {
+  post: Awaited<ReturnType<typeof getCollection<'posts'>>>[number];
+  lang: Lang;
+};
+
+// Trigger render to guarantee post.rendered is populated cleanly
+await render(post);
+
+const { data } = post;
+const loc = getPostLocalized(post, lang);
+const t = UI[lang];
+const { html: articleHtml, isFallbackEn } = extractLangHtml(post.rendered?.html, lang);
+
+const relatedPosts = (await getCollection('posts'))
+  .filter((p) => p.id !== post.id)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const site = Astro.site ?? new URL('https://kpoplives-blog.jane2036.workers.dev');
+const articleUrl = new URL(Astro.url.pathname, site).toString();
+const imageUrl = new URL(data.coverImage, site).toString();
+
+// Rich JSON-LD Structured Data for Google SEO + AI Search (GEO)
+const jsonLdList: Array<Record<string, unknown>> = [
+  {
+    '@context': 'https://schema.org',
+    '@type': data.category === 'news' ? 'NewsArticle' : 'Article',
+    headline: loc.title,
+    description: loc.description,
+    image: [imageUrl],
+    datePublished: data.pubDate.toISOString(),
+    dateModified: (data.updatedDate ?? data.pubDate).toISOString(),
+    inLanguage: HTML_LANG[lang],
+    mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+    author: {
+      '@type': 'Person',
+      name: data.author,
+      jobTitle: data.authorRole,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'KPOP LIVES',
+      url: site.toString(),
+    },
+    keywords: data.tags.join(', '),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: t.nav.home,
+        item: new URL(localizePath(lang, '/'), site).toString(),
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: data.category === 'news' ? t.nav.news : t.nav.columns,
+        item: new URL(
+          localizePath(lang, data.category === 'news' ? '/news' : '/columns'),
+          site
+        ).toString(),
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: loc.title,
+        item: articleUrl,
+      },
+    ],
+  },
+];
+
+if (data.youtubeId) {
+  jsonLdList.push({
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: data.youtubeTitle || loc.title,
+    description: loc.description,
+    thumbnailUrl: [`https://i.ytimg.com/vi/${data.youtubeId}/hqdefault.jpg`],
+    uploadDate: data.pubDate.toISOString(),
+    embedUrl: `https://www.youtube-nocookie.com/embed/${data.youtubeId}`,
+  });
+}
+
+if (data.faqs && data.faqs.length > 0) {
+  jsonLdList.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: data.faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  });
+}
+
+const langLinks: Array<{ code: Lang; label: string }> = [
+  { code: 'en', label: 'English' },
+  { code: 'ko', label: '한국어' },
+  { code: 'jp', label: '日本語' },
+  { code: 'es', label: 'Español' },
+];
+---
+
+<BaseLayout
+  title={loc.title}
+  description={loc.description}
+  image={data.coverImage}
+  lang={lang}
+  type="article"
+  jsonLd={jsonLdList}
+>
+  <article class="article-wrapper">
+    <header class="article-header container">
+      <a
+        href={localizePath(lang, data.category === 'news' ? '/news' : '/columns')}
+        class="back-link"
+      >
+        {data.category === 'news' ? t.article.backNews : t.article.backColumns}
+      </a>
+
+      <div class="article-badges">
+        <span class:list={['badge', `badge--${data.category}`]}>
+          {data.category === 'news' ? t.badges.news : t.badges.columnFull}
+        </span>
+        {data.tags.map((tag) => (
+          <span class="tag-chip">#{tag}</span>
+        ))}
+      </div>
+
+      <h1 class="article-title">{loc.title}</h1>
+      <p class="article-subtitle">{loc.description}</p>
+
+      <div class="article-meta-bar">
+        <div class="author-info">
+          <span class="author-avatar">{data.author.charAt(0)}</span>
+          <div>
+            <div class="author-name">{data.author}</div>
+            <div class="publish-meta">
+              <time datetime={data.pubDate.toISOString()}>
+                {formatDate(data.pubDate, lang)}
+              </time>
+              {data.updatedDate && (
+                <>
+                  <span>•</span>
+                  <span>
+                    {t.article.updated}: {formatDate(data.updatedDate, lang, true)}
+                  </span>
+                </>
+              )}
+              <span>•</span>
+              <span>{loc.readTime}</span>
+            </div>
+          </div>
+        </div>
+
+        <nav class="inline-lang-bar" aria-label="Article Language Editions">
+          {langLinks.map((item) => (
+            <a
+              href={localizePath(item.code, `/posts/${post.id}`)}
+              class:list={['inline-lang-btn', { 'is-active': lang === item.code }]}
+              aria-current={lang === item.code ? 'page' : undefined}
+              hreflang={item.code === 'jp' ? 'ja' : item.code}
+            >
+              {item.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <figure class="article-cover">
+        <img
+          src={data.coverImage}
+          alt={data.coverAlt || loc.title}
+          width="1280"
+          height="720"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+    </header>
+
+    <div class="article-content container">
+      <!-- GEO Key Summary & Takeaways Box -->
+      {(loc.summary || (loc.keyTakeaways && loc.keyTakeaways.length > 0)) && (
+        <aside class="summary-box">
+          <div class="summary-header">
+            <span class="summary-pill">{t.article.summaryPill}</span>
+            <span>{t.article.summaryLabel}</span>
+          </div>
+          {loc.summary && <p>{loc.summary}</p>}
+          {loc.keyTakeaways && loc.keyTakeaways.length > 0 && (
+            <ul class="takeaways-list">
+              {loc.keyTakeaways.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          )}
+          {isFallbackEn && t.article.fallbackNote && (
+            <div class="summary-note">{t.article.fallbackNote}</div>
+          )}
+        </aside>
+      )}
+
+      <!-- Official YouTube Lite Embed (if set in frontmatter) -->
+      {data.youtubeId && (
+        <section class="video-section">
+          <h2 class="video-heading">{t.article.watchVideo}</h2>
+          <LiteYouTube videoId={data.youtubeId} title={data.youtubeTitle || loc.title} />
+        </section>
+      )}
+
+      <!-- In-Article AdSense Slot (hidden until approved & configured) -->
+      <AdSlot format="in-article" />
+
+      <!-- Single-Language Rendered Markdown Body (100% clean for SEO & GEO) -->
+      <div class="prose" set:html={articleHtml} />
+
+      <!-- GEO FAQ Block -->
+      {data.faqs && data.faqs.length > 0 && (
+        <section class="faq-section">
+          <h2 class="faq-title">{t.article.faqTitle}</h2>
+          <div class="faq-list">
+            {data.faqs.map((faq) => (
+              <details class="faq-item" open>
+                <summary>{faq.q}</summary>
+                <p>{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Author E-E-A-T Card -->
+      <aside class="author-box">
+        <span class="author-avatar author-avatar--lg">{data.author.charAt(0)}</span>
+        <div>
+          <div class="author-box-name">{data.author}</div>
+          <div class="author-box-role">{data.authorRole}</div>
+        </div>
+      </aside>
+    </div>
+  </article>
+
+  {relatedPosts.length > 0 && (
+    <section class="related-section container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">{t.article.keepReading}</span>
+          <h2 class="section-title">{t.article.moreTitle}</h2>
+        </div>
+      </div>
+
+      <div class="related-grid">
+        {relatedPosts.map((item) => (
+          <PostCard post={item} lang={lang} />
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .article-wrapper {
+    padding-top: 40px;
+  }
+
+  .article-header {
+    max-width: 860px;
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    transition: color var(--transition);
+  }
+
+  .back-link:hover {
+    color: var(--accent-cyan);
+  }
+
+  .article-badges {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .article-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.2vw, 3.1rem);
+    line-height: 1.14;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+
+  .article-subtitle {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+
+  .article-meta-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 18px 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 32px;
+  }
+
+  .author-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-cyan));
+    color: #07070c;
+    font-family: var(--font-display);
+    font-weight: 700;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  .author-avatar--lg {
+    width: 52px;
+    height: 52px;
+    font-size: 1.25rem;
+  }
+
+  .author-name {
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .publish-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+  }
+
+  .inline-lang-bar {
+    display: inline-flex;
+    flex-wrap: wrap;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-pill);
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .inline-lang-btn {
+    color: var(--text-secondary);
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 13px;
+    border-radius: var(--radius-pill);
+    transition: var(--transition);
+  }
+
+  .inline-lang-btn:hover {
+    color: var(--text-primary);
+  }
+
+  .inline-lang-btn.is-active {
+    background: linear-gradient(135deg, var(--accent-pink), #c91878);
+    color: #ffffff;
+  }
+
+  .article-cover {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 42px;
+    aspect-ratio: 16 / 9;
+    background: var(--bg-surface);
+  }
+
+  .article-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .article-content {
+    max-width: 740px;
+  }
+
+  .summary-box {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(255, 46, 147, 0.08));
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: var(--radius-md);
+    padding: 22px 24px;
+    margin-bottom: 34px;
+  }
+
+  .summary-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  .summary-pill {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-cyan);
+    color: #07070c;
+    font-weight: 700;
+  }
+
+  .summary-box p {
+    color: #e6e6f2;
+    font-size: 0.98rem;
+    line-height: 1.75;
+  }
+
+  .takeaways-list {
+    margin: 14px 0 0 1.2em;
+    color: #e6e6f2;
+    font-size: 0.95rem;
+  }
+
+  .takeaways-list li {
+    margin-bottom: 6px;
+  }
+
+  .summary-note {
+    margin-top: 12px;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+  }
+
+  .video-section {
+    margin: 24px 0 36px;
+  }
+
+  .video-heading {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    color: var(--accent-cyan);
+  }
+
+  .faq-section {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .faq-title {
+    font-family: var(--font-display);
+    font-size: 1.45rem;
+    margin-bottom: 18px;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .faq-item {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+  }
+
+  .faq-item summary {
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--text-primary);
+  }
+
+  .faq-item p {
+    margin-top: 10px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .author-box {
+    margin-top: 48px;
+    padding: 20px 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .author-box-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .author-box-role {
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+  }
+
+  .related-section {
+    margin-top: 84px;
+    padding-top: 52px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  @media (max-width: 900px) {
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
