@@ -16,7 +16,10 @@ readTimeKo: "4분 소요"
 readTimeJp: "読了目安 4分"
 readTimeEs: "4 min de lectura"
 tags: ["TXT", "Charts", "Physical Sales", "Column"]
-coverImage: "/images/cover-global-charts.webp"
+coverImage: "/images/cover-txt-storm.webp"
+coverCredit: "Original Editorial Art by KPOP LIVES"
+youtubeId: "M9G4guYg-i8"
+youtubeTitle: "TXT (투모로우바이투게더) 'Angel Bite' Official MV"
 featured: false
 summaryEn: "Tomorrow X Together's 'PERFECT STORM' stormed past 1.5 million physical copies in just two days while topping iTunes charts worldwide—underscoring how top-tier K-Pop acts continue to drive massive first-week demand in late 2026."
 summaryKo: "투모로우바이투게더(TXT)의 새 앨범 'PERFECT STORM'이 전 세계 아이튠즈 1위와 함께 발매 단 이틀 만에 150만 장을 돌파했습니다. 음반 시장 안정화 전망 속에서도 최정상급 K-POP 그룹이 압도적 초동 화력을 유지하는 배경을 분석합니다."

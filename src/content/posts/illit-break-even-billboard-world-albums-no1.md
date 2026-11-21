@@ -16,7 +16,10 @@ readTimeKo: "4분 소요"
 readTimeJp: "読了目安 4分"
 readTimeEs: "4 min de lectura"
 tags: ["ILLIT", "5th-Gen", "Billboard", "Column"]
-coverImage: "/images/cover-5th-gen.webp"
+coverImage: "/images/cover-illit-breakeven.webp"
+coverCredit: "Original Editorial Art by KPOP LIVES"
+youtubeId: "V2V9-9VhYJo"
+youtubeTitle: "ILLIT (아일릿) 'You're Under Arrest' Official MV"
 featured: false
 summaryEn: "ILLIT's fifth mini-album 'BREAK EVEN'—anchored by the title track 'You're Under Arrest'—has claimed No. 1 on the Billboard World Albums chart, proving that the group has evolved far beyond debut-era viral hype into a consistent global chart force."
 summaryKo: "ILLIT이 타이틀곡 'You're Under Arrest'가 수록된 5번째 미니앨범 'BREAK EVEN'으로 빌보드 월드 앨범 차트 1위를 차지했습니다. 데뷔 초기의 바이럴 화제성을 넘어 5세대 대표 글로벌 차트 강자로 안착한 사운드 진화와 전략을 짚어봅니다."

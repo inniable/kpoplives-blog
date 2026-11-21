@@ -207,6 +207,7 @@ const langLinks: Array<{ code: Lang; label: string }> = [
           fetchpriority="high"
           decoding="async"
         />
+        {data.coverCredit && <figcaption class="cover-credit">{data.coverCredit}</figcaption>}
       </figure>
     </header>
 
@@ -428,6 +429,16 @@ const langLinks: Array<{ code: Lang; label: string }> = [
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .cover-credit {
+    padding: 8px 14px;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    background: rgba(7, 7, 12, 0.9);
+    border-top: 1px solid var(--border-subtle);
+    text-align: right;
   }
 
   .article-content {

@@ -29,6 +29,7 @@ const posts = defineCollection({
     tags: z.array(z.string()).default([]),
     coverImage: z.string().default('/images/cover-5th-gen.webp'),
     coverAlt: z.string().optional(),
+    coverCredit: z.string().optional(),
     featured: z.boolean().default(false),
     summaryEn: z.string().optional(),
     summaryKo: z.string(),

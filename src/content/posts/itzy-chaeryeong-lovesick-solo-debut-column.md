@@ -16,7 +16,10 @@ readTimeKo: "4분 소요"
 readTimeJp: "読了目安 4分"
 readTimeEs: "4 min de lectura"
 tags: ["ITZY", "Chaeryeong", "Solo Debut", "Column"]
-coverImage: "/images/cover-seoul-studio.webp"
+coverImage: "/images/cover-chaeryeong-lovesick.webp"
+coverCredit: "Original Editorial Art by KPOP LIVES"
+youtubeId: "pe-rk1ekb4w"
+youtubeTitle: "CHAERYEONG (채령) 'Lovesick' Official MV"
 featured: false
 summaryEn: "ITZY's Chaeryeong launched her official solo career on November 9 with her first mini-album 'Lovesick,' stepping beyond group choreography into personal songwriting with credits on the B-side 'Favorite Reason.'"
 summaryKo: "ITZY 채령이 11월 9일 첫 솔로 미니앨범 'Lovesick'으로 공식 솔로 데뷔를 알렸습니다. 그룹 내 퍼포먼스 강자에서 수록곡 'Favorite Reason' 크레딧에 이름을 올린 싱어송라이터적 면모까지, 4세대 걸그룹 솔로 행보의 새로운 기준을 살펴봅니다."

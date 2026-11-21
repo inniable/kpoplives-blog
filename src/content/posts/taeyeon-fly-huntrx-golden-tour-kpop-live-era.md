@@ -16,7 +16,10 @@ readTimeKo: "5분 소요"
 readTimeJp: "読了目安 5分"
 readTimeEs: "5 min de lectura"
 tags: ["Taeyeon", "HUNTR/X", "World Tour", "Live", "Column"]
-coverImage: "/images/cover-world-tour.webp"
+coverImage: "/images/cover-taeyeon-huntrx.webp"
+coverCredit: "Original Editorial Art by KPOP LIVES"
+youtubeId: "5_n6t9G2TUQ"
+youtubeTitle: "TAEYEON (태연) 'To. X' Official MV"
 featured: false
 summaryEn: "Two contrasting tour announcements highlight K-Pop's expanding live universe: legendary vocalist Taeyeon unveiling stops for her solo tour 'F.L.Y.,' and animated phenomenon 'KPop Demon Hunters' (HUNTR/X) announcing a 2027 'GOLDEN' world tour including UK arena dates."
 summaryKo: "레전드 보컬리스트 태연의 솔로 콘서트 투어 'F.L.Y.' 일정 공개와, 글로벌 애니메이션 신드롬 'KPop Demon Hunters'(HUNTR/X)의 2027 'GOLDEN' 월드 투어(영국 아레나 포함) 발표는 K-POP 라이브 시장이 '인간적 보컬 예술'과 '차세대 버추얼 IP 공연'으로 동시에 확장되고 있음을 보여줍니다."
