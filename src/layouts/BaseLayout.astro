@@ -59,10 +59,11 @@ const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
 ---
 
 <!doctype html>
-<html lang={HTML_LANG[lang]} data-lang={lang}>
+<html lang={HTML_LANG[lang]} data-lang={lang} translate="no">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href={canonicalUrl} />

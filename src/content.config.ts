@@ -41,6 +41,9 @@ const posts = defineCollection({
     youtubeId: z.string().optional(),
     youtubeTitle: z.string().optional(),
     faqs: z.array(faqSchema).optional(),
+    faqsKo: z.array(faqSchema).optional(),
+    faqsJp: z.array(faqSchema).optional(),
+    faqsEs: z.array(faqSchema).optional(),
   }),
 });
 

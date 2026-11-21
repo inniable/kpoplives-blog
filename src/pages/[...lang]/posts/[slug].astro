@@ -112,11 +112,11 @@ if (data.youtubeId) {
   });
 }
 
-if (data.faqs && data.faqs.length > 0) {
+if (loc.faqs && loc.faqs.length > 0) {
   jsonLdList.push({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: data.faqs.map((item) => ({
+    mainEntity: loc.faqs.map((item) => ({
       '@type': 'Question',
       name: item.q,
       acceptedAnswer: { '@type': 'Answer', text: item.a },
@@ -184,7 +184,7 @@ const langLinks: Array<{ code: Lang; label: string }> = [
           </div>
         </div>
 
-        <nav class="inline-lang-bar" aria-label="Article Language Editions">
+        <nav class="inline-lang-bar" aria-label="Article Language Editions" translate="no">
           {langLinks.map((item) => (
             <a
               href={localizePath(item.code, `/posts/${post.id}`)}
@@ -247,11 +247,11 @@ const langLinks: Array<{ code: Lang; label: string }> = [
       <div class="prose" set:html={articleHtml} />
 
       <!-- GEO FAQ Block -->
-      {data.faqs && data.faqs.length > 0 && (
+      {loc.faqs && loc.faqs.length > 0 && (
         <section class="faq-section">
           <h2 class="faq-title">{t.article.faqTitle}</h2>
           <div class="faq-list">
-            {data.faqs.map((faq) => (
+            {loc.faqs.map((faq) => (
               <details class="faq-item" open>
                 <summary>{faq.q}</summary>
                 <p>{faq.a}</p>

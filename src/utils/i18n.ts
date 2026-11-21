@@ -118,7 +118,16 @@ export function getPostLocalized(post: CollectionEntry<'posts'>, lang: Lang) {
           ? d.keyTakeawaysEs
           : d.keyTakeaways;
 
-  return { title, description, readTime, summary, keyTakeaways };
+  const faqs =
+    lang === 'ko'
+      ? d.faqsKo
+      : lang === 'jp'
+        ? d.faqsJp
+        : lang === 'es'
+          ? d.faqsEs
+          : d.faqs;
+
+  return { title, description, readTime, summary, keyTakeaways, faqs };
 }
 
 export function extractLangHtml(

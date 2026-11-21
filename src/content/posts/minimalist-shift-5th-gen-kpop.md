@@ -29,11 +29,34 @@ keyTakeawaysKo:
   - "5세대 K-POP은 강렬한 드롭 대신 UK 개러지와 안티 드롭(Anti-drop) 코러스로 리스너의 피로도를 낮췄습니다."
   - "3분 미만의 컴팩트한 러닝타임으로 스트리밍 반복 재생과 숏폼 확산에 최적화되었습니다."
   - "Y2K 아날로그 노스탤지어에 서울 특유의 정교한 하이파이 마스터링을 결합한 것이 핵심입니다."
+keyTakeawaysJp:
+  - "第5世代K-POPは重厚なドロップではなく、UKガラージやアンチドロップで聴き疲れしにくい音像へ進化しました。"
+  - "3分未満のコンパクトな尺により、ストリーミングでのリピート再生とショート動画拡散に最適化されています。"
+  - "Y2Kのノスタルジーとソウル最高峰のハイファイ・マスタリングの融合が最大の強みです。"
+keyTakeawaysEs:
+  - "El K-Pop de 5.ª generación sustituye los drops masivos por UK garage y estribillos anti-drop."
+  - "Las canciones de menos de 3 minutos optimizan el replay en streaming y videos cortos."
+  - "Los equipos de A&R en Seúl combinan nostalgia Y2K con una masterización impecable."
 faqs:
   - q: "What defines 5th-generation K-Pop music production?"
     a: "5th-generation K-Pop is defined by minimalist easy-listening production, UK garage and Jersey club rhythms, anti-drop choruses, and compact under-three-minute track lengths."
   - q: "Why did K-Pop shift away from maximalist drops?"
     a: "Short-form video platforms and algorithmic streaming playlists reward songs with effortless replayability rather than jarring tempo switches."
+faqsKo:
+  - q: "5세대 K-POP 음악 프로덕션의 가장 큰 특징은 무엇인가요?"
+    a: "미니멀한 이지리스닝 사운드, UK 개러지·저지 클럽 리듬, 안티 드롭 코러스, 그리고 3분 미만의 컴팩트한 러닝타임이 핵심 특징입니다."
+  - q: "K-POP이 기존의 강렬한 맥시멀리즘에서 변화한 이유는 무엇인가요?"
+    a: "숏폼 플랫폼과 스트리밍 알고리즘 플레이리스트 환경에서는 피로감 없이 여러 번 반복 재생하기 좋은 곡이 훨씬 유리하기 때문입니다."
+faqsJp:
+  - q: "第5世代K-POPのプロダクションにおける最大の特徴は何ですか？"
+    a: "ミニマルなイージーリスニング志向、UKガラージやジャージークラブのリズム、アンチドロップのサビ、そして3分未満のコンパクトな尺が特徴です。"
+  - q: "なぜK-POPは重厚なマキシマリズムから変化したのでしょうか？"
+    a: "ショート動画やストリーミングのプレイリスト時代では、何度リピートしても聴き疲れしない心地よい楽曲が支持されやすいためです。"
+faqsEs:
+  - q: "¿Qué define la producción musical del K-Pop de quinta generación?"
+    a: "Se caracteriza por un sonido minimalista easy-listening, ritmos de UK garage y Jersey club, estribillos anti-drop y canciones compactas de menos de tres minutos."
+  - q: "¿Por qué el K-Pop dejó atrás los drops maximalistas?"
+    a: "Porque las plataformas de video corto y las playlists algorítmicas premian las canciones fáciles de repetir decenas de veces sin fatiga auditiva."
 ---
 
 For nearly a decade, K-Pop's calling card on the global stage was **maximalism**. Songs moved like roller coasters—shifting tempos mid-bridge, stacking brass stabs over trap hi-hats, and exploding into anthemic dance breaks built for stadium cameras.
