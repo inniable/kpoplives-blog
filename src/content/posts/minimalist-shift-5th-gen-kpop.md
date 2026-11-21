@@ -16,7 +16,7 @@ readTimeJp: "読了目安 5分"
 readTimeEs: "5 min de lectura"
 tags: ["5th-Gen", "Production", "Editorial"]
 coverImage: "/images/cover-5th-gen.webp"
-featured: true
+featured: false
 summaryEn: "Fifth-generation K-Pop groups are trading explosive maximalist drops for sleek UK garage grooves, under-three-minute runtimes, and whispered hooks engineered for short-form replay."
 summaryKo: "최근 5세대 K-POP 신인 그룹들은 과거의 웅장하고 폭발적인 사운드 대신, UK 개러지·드럼 앤 베이스 기반의 가볍고 세련된 이지리스닝 트랙으로 글로벌 리스너를 사로잡고 있습니다. 본 칼럼에서는 스트리밍 반복 재생과 숏폼 생태계가 K-POP 프로덕션 문법을 어떻게 진화시켰는지 짚어봅니다."
 summaryJp: "第5世代K-POPグループは、かつての重厚なマキシマリズムから離れ、UKガラージやイージーリスニングを基調とした洗練されたミニマルサウンドで世界のチャートを席巻しています。本コラムでは、ショート動画とストリーミング時代がK-POPのプロダクションをどう変えたのかを分析します。"
