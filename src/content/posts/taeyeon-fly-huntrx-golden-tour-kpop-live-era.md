@@ -17,7 +17,7 @@ readTimeJp: "読了目安 5分"
 readTimeEs: "5 min de lectura"
 tags: ["Taeyeon", "HUNTR/X", "World Tour", "Live", "Column"]
 coverImage: "/images/cover-taeyeon-huntrx.webp"
-coverCredit: "Original Editorial Art by KPOP LIVES"
+coverCredit: "Photo by K-POPIT 케이팝잇 / Wikimedia Commons (CC BY 3.0)"
 youtubeId: "5_n6t9G2TUQ"
 youtubeTitle: "TAEYEON (태연) 'To. X' Official MV"
 featured: false

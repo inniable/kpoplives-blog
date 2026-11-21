@@ -17,7 +17,7 @@ readTimeJp: "読了目安 5分"
 readTimeEs: "5 min de lectura"
 tags: ["ENHYPEN", "MAMA 2026", "Billboard 200", "Column"]
 coverImage: "/images/cover-enhypen-sin.webp"
-coverCredit: "Original Editorial Art by KPOP LIVES"
+coverCredit: "Photo by 티비텐 / Wikimedia Commons (CC BY 3.0)"
 youtubeId: "dE_Ro8Sac2M"
 youtubeTitle: "ENHYPEN (엔하이픈) 'I Want You' Official MV"
 featured: true

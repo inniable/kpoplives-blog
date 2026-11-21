@@ -17,7 +17,7 @@ readTimeJp: "読了目安 4分"
 readTimeEs: "4 min de lectura"
 tags: ["TXT", "Charts", "Physical Sales", "Column"]
 coverImage: "/images/cover-txt-storm.webp"
-coverCredit: "Original Editorial Art by KPOP LIVES"
+coverCredit: "Photo by Dispatch / Wikimedia Commons (CC BY 3.0)"
 youtubeId: "M9G4guYg-i8"
 youtubeTitle: "TXT (투모로우바이투게더) 'Angel Bite' Official MV"
 featured: false

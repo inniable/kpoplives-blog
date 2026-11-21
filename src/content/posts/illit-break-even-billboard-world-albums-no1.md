@@ -17,7 +17,7 @@ readTimeJp: "読了目安 4分"
 readTimeEs: "4 min de lectura"
 tags: ["ILLIT", "5th-Gen", "Billboard", "Column"]
 coverImage: "/images/cover-illit-breakeven.webp"
-coverCredit: "Original Editorial Art by KPOP LIVES"
+coverCredit: "Photo by 티비텐 / Wikimedia Commons (CC BY 3.0)"
 youtubeId: "V2V9-9VhYJo"
 youtubeTitle: "ILLIT (아일릿) 'You're Under Arrest' Official MV"
 featured: false

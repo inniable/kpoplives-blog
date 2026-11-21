@@ -17,7 +17,7 @@ readTimeJp: "読了目安 4分"
 readTimeEs: "4 min de lectura"
 tags: ["ITZY", "Chaeryeong", "Solo Debut", "Column"]
 coverImage: "/images/cover-chaeryeong-lovesick.webp"
-coverCredit: "Original Editorial Art by KPOP LIVES"
+coverCredit: "Photo by K-POPIT 케이팝잇 / Wikimedia Commons (CC BY 4.0)"
 youtubeId: "pe-rk1ekb4w"
 youtubeTitle: "CHAERYEONG (채령) 'Lovesick' Official MV"
 featured: false
