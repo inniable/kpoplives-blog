@@ -20,7 +20,7 @@ coverImage: "/images/cover-enhypen-sin.webp"
 coverCredit: "Photo by 티비텐 / Wikimedia Commons (CC BY 3.0)"
 youtubeId: "dE_Ro8Sac2M"
 youtubeTitle: "ENHYPEN (엔하이픈) 'I Want You' Official MV"
-featured: true
+featured: false
 summaryEn: "With the November 20 release of 'THE SIN: PARALLEL WORLD' and their Fans' Choice of the Year Grand Prize at the 2026 MAMA Awards, ENHYPEN closed out a historic three-comeback year defined by narrative cohesion and stadium-scale momentum."
 summaryKo: "ENHYPEN이 11월 20일 스핀오프 싱글 앨범 'THE SIN: PARALLEL WORLD' 발매와 2026 MAMA Awards 대상(Fans' Choice of the Year) 수상으로 올해 3연속 컴백 대장정의 정점을 찍었습니다. 빌보드 200 1위와 BLOOD SAGA 월드 투어로 이어진 서사 중심 전략을 분석합니다."
 summaryJp: "11月20日のスピンオフシングル『THE SIN: PARALLEL WORLD』発売と2026 MAMA Awards大賞受賞により、ENHYPENは年3回のカムバックという歴史的な一年を締めくくりました。ビルボード200首位とワールドツアーを結ぶ物語戦略を掘り下げます。"
