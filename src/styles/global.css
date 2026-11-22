@@ -33,6 +33,68 @@
   --transition: 0.24s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Light Mode Editorial Palette */
+html[data-theme='light'] {
+  --bg-base: #f6f7fb;
+  --bg-surface: #ffffff;
+  --bg-elevated: #eef0f7;
+  --bg-glass: rgba(255, 255, 255, 0.85);
+
+  --text-primary: #11111c;
+  --text-secondary: #4a4a62;
+  --text-muted: #6c6c84;
+
+  --accent-pink: #e11d74;
+  --accent-pink-glow: rgba(225, 29, 116, 0.22);
+  --accent-cyan: #0284c7;
+  --accent-cyan-glow: rgba(2, 132, 199, 0.2);
+
+  --border-subtle: rgba(17, 17, 28, 0.1);
+  --border-hover: rgba(17, 17, 28, 0.25);
+}
+
+html[data-theme='light'] body {
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(225, 29, 116, 0.06), transparent 36%),
+    radial-gradient(circle at 88% 14%, rgba(2, 132, 199, 0.06), transparent 38%);
+}
+
+html[data-theme='light'] .site-header {
+  background: rgba(246, 247, 251, 0.86);
+}
+
+html[data-theme='light'] .site-footer {
+  background: #eceef6;
+}
+
+html[data-theme='light'] .prose {
+  color: #252536;
+}
+
+html[data-theme='light'] .prose strong {
+  color: #0d0d16;
+}
+
+html[data-theme='light'] .summary-box p,
+html[data-theme='light'] .takeaways-list {
+  color: #1e1e2e;
+}
+
+html[data-theme='light'] .badge--news {
+  color: #be125d;
+  background: rgba(225, 29, 116, 0.1);
+}
+
+html[data-theme='light'] .badge--column {
+  color: #0369a1;
+  background: rgba(2, 132, 199, 0.1);
+}
+
+html[data-theme='light'] .badge--culture {
+  color: #7e22ce;
+  background: rgba(147, 51, 234, 0.1);
+}
+
 *,
 *::before,
 *::after {

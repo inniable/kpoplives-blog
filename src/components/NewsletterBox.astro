@@ -1,0 +1,213 @@
+---
+import type { Lang } from '../utils/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+
+const copy: Record<
+  Lang,
+  { eyebrow: string; title: string; desc: string; placeholder: string; btn: string; thanks: string; invalid: string }
+> = {
+  en: {
+    eyebrow: 'WEEKLY DISPATCH',
+    title: 'Get Sharp K-Pop Columns Every Week',
+    desc: 'Join global fans receiving curated K-Pop news, mid-size label spotlights, and cultural essays — zero spam.',
+    placeholder: 'you@example.com',
+    btn: 'Subscribe',
+    thanks: 'You are on the list! Thanks for joining KPOP LIVES.',
+    invalid: 'Please enter a valid email address.',
+  },
+  ko: {
+    eyebrow: '주간 뉴스레터',
+    title: '매주 엄선된 K-POP 뉴스 & 영문 칼럼을 받아보세요',
+    desc: '대형 기획사부터 중소 레이블·K-컬처 파급력까지, 핵심만 담은 주간 브리핑을 보내드립니다.',
+    placeholder: '이메일 주소를 입력하세요',
+    btn: '구독하기',
+    thanks: '구독 신청이 완료되었습니다! KPOP LIVES와 함께해 주셔서 감사합니다.',
+    invalid: '올바른 이메일 주소를 입력해 주세요.',
+  },
+  jp: {
+    eyebrow: '週刊ニュースレター',
+    title: '注目のK-POPコラムを毎週お届け',
+    desc: '大手から中小レーベル、Kカルチャーの最新トレンドまで厳選した週刊ダイジェストを配信します。',
+    placeholder: 'メールアドレスを入力',
+    btn: '登録する',
+    thanks: 'ご登録ありがとうございます！KPOP LIVESの最新号をお楽しみに。',
+    invalid: '有効なメールアドレスを入力してください。',
+  },
+  es: {
+    eyebrow: 'BOLETÍN SEMANAL',
+    title: 'Recibe nuestras columnas de K-Pop cada semana',
+    desc: 'Noticias verificadas, sellos independientes y cultura K en un resumen semanal directo a tu correo.',
+    placeholder: 'tu@correo.com',
+    btn: 'Suscribirme',
+    thanks: '¡Suscripción confirmada! Gracias por unirte a KPOP LIVES.',
+    invalid: 'Por favor, ingresa un correo electrónico válido.',
+  },
+};
+
+const c = copy[lang];
+const endpoint = import.meta.env.PUBLIC_NEWSLETTER_ENDPOINT || '';
+---
+
+<section class="newsletter-section container">
+  <div class="newsletter-card">
+    <div class="newsletter-copy">
+      <span class="section-eyebrow">{c.eyebrow}</span>
+      <h2 class="newsletter-title">{c.title}</h2>
+      <p class="newsletter-desc">{c.desc}</p>
+    </div>
+
+    <form
+      class="newsletter-form"
+      data-newsletter-form
+      data-endpoint={endpoint}
+      data-thanks={c.thanks}
+      data-invalid={c.invalid}
+      novalidate
+    >
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder={c.placeholder}
+        aria-label={c.placeholder}
+        class="newsletter-input"
+      />
+      <button type="submit" class="newsletter-btn">{c.btn}</button>
+      <p class="newsletter-msg" data-newsletter-msg aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-newsletter-form]').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = form as HTMLFormElement;
+      const input = f.querySelector('input[type="email"]') as HTMLInputElement;
+      const msg = f.querySelector('[data-newsletter-msg]') as HTMLElement;
+      const email = input.value.trim();
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        msg.textContent = f.dataset.invalid || 'Invalid email';
+        msg.className = 'newsletter-msg is-error';
+        return;
+      }
+
+      const endpoint = f.dataset.endpoint;
+      if (endpoint) {
+        try {
+          await fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email }),
+          });
+        } catch {}
+      }
+
+      try {
+        localStorage.setItem('kpoplives-newsletter-email', email);
+      } catch {}
+
+      input.value = '';
+      msg.textContent = f.dataset.thanks || 'Subscribed!';
+      msg.className = 'newsletter-msg is-success';
+    });
+  });
+</script>
+
+<style>
+  .newsletter-section {
+    margin-top: 64px;
+  }
+
+  .newsletter-card {
+    background: linear-gradient(135deg, rgba(255, 46, 147, 0.12), rgba(0, 240, 255, 0.1));
+    border: 1px solid var(--border-hover);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 28px;
+    align-items: center;
+  }
+
+  .newsletter-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+
+  .newsletter-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .newsletter-input {
+    flex: 1 1 200px;
+    min-width: 0;
+    padding: 13px 18px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-hover);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.94rem;
+    outline: none;
+    transition: border-color var(--transition);
+  }
+
+  .newsletter-input:focus {
+    border-color: var(--accent-cyan);
+  }
+
+  .newsletter-btn {
+    padding: 13px 24px;
+    border-radius: var(--radius-pill);
+    border: none;
+    background: linear-gradient(135deg, var(--accent-pink), #c91878);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    box-shadow: 0 8px 24px -8px var(--accent-pink-glow);
+    transition: transform var(--transition);
+  }
+
+  .newsletter-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .newsletter-msg {
+    width: 100%;
+    font-size: 0.84rem;
+    min-height: 1.2em;
+  }
+
+  .newsletter-msg.is-success {
+    color: var(--accent-cyan);
+  }
+
+  .newsletter-msg.is-error {
+    color: var(--accent-pink);
+  }
+
+  @media (max-width: 820px) {
+    .newsletter-card {
+      grid-template-columns: 1fr;
+      padding: 26px 22px;
+    }
+  }
+</style>

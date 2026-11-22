@@ -59,6 +59,11 @@ faqsEs:
     a: "Conocido como el 'Brooklyn de Seúl', sus antiguos almacenes rotan cada una o dos semanas con pop-ups inmersivos de marcas de lujo, K-Beauty y experiencias oficiales de K-Pop."
   - q: "¿Cómo influye el K-Pop en la industria global del lujo?"
     a: "Embajadores como Karina de aespa (Prada) o Lisa de BLACKPINK (Louis Vuitton) generan millones en valor mediático (EMV) y marcan tendencias globales de estilo."
+sources:
+  - label: "Visit Seoul — Seongsu-dong Travel & Culture Guide"
+    url: "https://english.visitseoul.net/"
+  - label: "Billboard K-Pop News & Industry Coverage"
+    url: "https://www.billboard.com/c/music/pop/k-pop/"
 ---
 
 To measure K-Pop's true footprint in 2026 solely by Spotify streams or Billboard trophies is to miss half the story. Across Paris fashion runways, Tokyo beauty counters, and the red-brick alleys of **Seongsu-dong**, K-Pop has evolved from a music genre into **the operating system of global youth consumer culture**.

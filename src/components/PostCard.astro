@@ -23,6 +23,7 @@ const t = UI[lang];
   class:list={['post-card', `post-card--${data.category}`]}
   data-category={data.category}
   data-tags={data.tags.join(',').toLowerCase()}
+  data-search={`${loc.title} ${loc.description} ${data.author} ${data.tags.join(' ')}`.toLowerCase()}
 >
   <a href={localizePath(lang, `/posts/${id}`)} class="card-link">
     <div class="card-media">

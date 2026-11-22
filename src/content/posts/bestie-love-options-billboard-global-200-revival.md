@@ -59,6 +59,9 @@ faqsEs:
     a: "Debutó en el puesto n.º 145 en la lista del 21 de noviembre de 2026."
   - q: "¿Por qué volvió a sonar una canción de 2013 trece años después?"
     a: "Gracias a un resurgimiento viral en redes sociales y videos cortos liderado por fans que presentaron el tema a una nueva generación global."
+sources:
+  - label: "Billboard Global 200 Official Chart"
+    url: "https://www.billboard.com/charts/billboard-global-200/"
 ---
 
 In one of the most unexpected chart stories of late 2026, former K-Pop girl group **BESTie** has scored a surprise global breakthrough more than a decade after their track first hit the airwaves.

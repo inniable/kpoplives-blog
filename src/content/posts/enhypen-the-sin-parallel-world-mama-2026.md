@@ -61,6 +61,11 @@ faqsEs:
     a: "El álbum sencillo spin-off se publicó el 20 de noviembre de 2026, tras el lanzamiento del tema principal 'I Want You' el 13 de noviembre."
   - q: "¿Qué Gran Premio ganó ENHYPEN en los MAMA Awards 2026?"
     a: "ENHYPEN se llevó el Daesang a 'Fans' Choice of the Year' en los MAMA Awards 2026."
+sources:
+  - label: "HYBE LABELS Official YouTube — ENHYPEN 'I Want You' Official MV"
+    url: "https://www.youtube.com/watch?v=dE_Ro8Sac2M"
+  - label: "Billboard — ENHYPEN Chart History"
+    url: "https://www.billboard.com/artist/enhypen/"
 ---
 
 In modern K-Pop, sustaining cultural urgency across twelve full months is one of the industry's toughest balancing acts. Release too little, and algorithmic feeds move on; release too much, and audiences experience fatigue. In 2026, **ENHYPEN** solved that equation with surgical precision.

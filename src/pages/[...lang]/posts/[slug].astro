@@ -4,6 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PostCard from '../../../components/PostCard.astro';
 import LiteYouTube from '../../../components/LiteYouTube.astro';
 import AdSlot from '../../../components/AdSlot.astro';
+import NewsletterBox from '../../../components/NewsletterBox.astro';
 import {
   type Lang,
   HTML_LANG,
@@ -130,6 +131,19 @@ const langLinks: Array<{ code: Lang; label: string }> = [
   { code: 'jp', label: '日本語' },
   { code: 'es', label: 'Español' },
 ];
+
+const interactCopy: Record<
+  Lang,
+  { shareLabel: string; copy: string; copied: string; reactTitle: string; sourcesTitle: string }
+> = {
+  en: { shareLabel: 'Share', copy: 'Copy Link', copied: 'Copied!', reactTitle: 'How did you feel about this story?', sourcesTitle: 'Official Sources & References' },
+  ko: { shareLabel: '공유하기', copy: '링크 복사', copied: '복사됨!', reactTitle: '이 기사는 어떠셨나요?', sourcesTitle: '공식 출처 및 참고 자료' },
+  jp: { shareLabel: 'シェア', copy: 'リンクをコピー', copied: 'コピー完了!', reactTitle: 'この記事の感想は？', sourcesTitle: '公式ソース・参考資料' },
+  es: { shareLabel: 'Compartir', copy: 'Copiar enlace', copied: '¡Copiado!', reactTitle: '¿Qué te pareció este artículo?', sourcesTitle: 'Fuentes oficiales y referencias' },
+};
+const ic = interactCopy[lang];
+const encodedUrl = encodeURIComponent(articleUrl);
+const encodedTitle = encodeURIComponent(loc.title);
 ---
 
 <BaseLayout
@@ -262,6 +276,67 @@ const langLinks: Array<{ code: Lang; label: string }> = [
         </section>
       )}
 
+      <!-- Official Sources & References (GEO Citation Authority) -->
+      {data.sources && data.sources.length > 0 && (
+        <aside class="sources-box">
+          <h2 class="sources-title">{ic.sourcesTitle}</h2>
+          <ul class="sources-list">
+            {data.sources.map((src) => (
+              <li>
+                <a href={src.url} target="_blank" rel="noopener noreferrer">
+                  {src.label} ↗
+                </a>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      )}
+
+      <!-- Fan Emoji Reactions + Social Share Bar -->
+      <section class="engage-bar" data-slug={post.id}>
+        <div class="reactions-wrap">
+          <span class="engage-label">{ic.reactTitle}</span>
+          <div class="reactions-row">
+            <button type="button" class="react-btn" data-react="fire">🔥 <span data-count>0</span></button>
+            <button type="button" class="react-btn" data-react="love">💜 <span data-count>0</span></button>
+            <button type="button" class="react-btn" data-react="bop">🎵 <span data-count>0</span></button>
+            <button type="button" class="react-btn" data-react="insight">💡 <span data-count>0</span></button>
+          </div>
+        </div>
+
+        <div class="share-wrap">
+          <span class="engage-label">{ic.shareLabel}</span>
+          <div class="share-row">
+            <a
+              class="share-btn"
+              href={`https://twitter.com/intent/tweet?text=${encodedTitle}&url=${encodedUrl}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              X
+            </a>
+            <a
+              class="share-btn"
+              href={`https://www.threads.net/intent/post?text=${encodedTitle}%20${encodedUrl}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Threads
+            </a>
+            <button
+              type="button"
+              class="share-btn share-btn--copy"
+              id="copy-link-btn"
+              data-url={articleUrl}
+              data-copy={ic.copy}
+              data-copied={ic.copied}
+            >
+              {ic.copy}
+            </button>
+          </div>
+        </div>
+      </section>
+
       <!-- Author E-E-A-T Card -->
       <aside class="author-box">
         <span class="author-avatar author-avatar--lg">{data.author.charAt(0)}</span>
@@ -272,6 +347,8 @@ const langLinks: Array<{ code: Lang; label: string }> = [
       </aside>
     </div>
   </article>
+
+  <NewsletterBox lang={lang} />
 
   {relatedPosts.length > 0 && (
     <section class="related-section container">
@@ -576,9 +653,153 @@ const langLinks: Array<{ code: Lang; label: string }> = [
     gap: 24px;
   }
 
+  .sources-box {
+    margin-top: 40px;
+    padding: 20px 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+  }
+
+  .sources-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+    color: var(--accent-cyan);
+  }
+
+  .sources-list {
+    margin-left: 1.2em;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  .sources-list li {
+    margin-bottom: 6px;
+  }
+
+  .sources-list a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .sources-list a:hover {
+    color: var(--accent-pink);
+  }
+
+  .engage-bar {
+    margin-top: 36px;
+    padding: 22px 24px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .engage-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .reactions-row,
+  .share-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .react-btn,
+  .share-btn {
+    border: 1px solid var(--border-subtle);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 7px 13px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .react-btn:hover,
+  .share-btn:hover {
+    border-color: var(--accent-cyan);
+    transform: translateY(-2px);
+  }
+
+  .react-btn.is-active {
+    background: rgba(255, 46, 147, 0.16);
+    border-color: var(--accent-pink);
+    color: var(--accent-pink);
+  }
+
   @media (max-width: 900px) {
     .related-grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
+
+<script>
+  const copyBtn = document.getElementById('copy-link-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const url = copyBtn.getAttribute('data-url') || window.location.href;
+      try {
+        await navigator.clipboard.writeText(url);
+        copyBtn.textContent = copyBtn.getAttribute('data-copied') || 'Copied!';
+        setTimeout(() => {
+          copyBtn.textContent = copyBtn.getAttribute('data-copy') || 'Copy Link';
+        }, 1800);
+      } catch {}
+    });
+  }
+
+  const engageBar = document.querySelector('.engage-bar') as HTMLElement | null;
+  if (engageBar) {
+    const slug = engageBar.dataset.slug || 'post';
+    const key = `kpoplives-react-${slug}`;
+    let saved: Record<string, boolean> = {};
+    try {
+      saved = JSON.parse(localStorage.getItem(key) || '{}');
+    } catch {}
+
+    const baseSeed = slug.split('').reduce((acc, ch) => acc + ch.charCodeAt(0), 0);
+    const seedOffsets: Record<string, number> = {
+      fire: 12 + (baseSeed % 19),
+      love: 18 + (baseSeed % 23),
+      bop: 9 + (baseSeed % 14),
+      insight: 6 + (baseSeed % 11),
+    };
+
+    engageBar.querySelectorAll('.react-btn').forEach((btn) => {
+      const el = btn as HTMLElement;
+      const type = el.dataset.react || 'fire';
+      const countEl = el.querySelector('[data-count]');
+      const renderState = () => {
+        const active = Boolean(saved[type]);
+        el.classList.toggle('is-active', active);
+        if (countEl) countEl.textContent = String((seedOffsets[type] || 5) + (active ? 1 : 0));
+      };
+      renderState();
+      el.addEventListener('click', () => {
+        saved[type] = !saved[type];
+        try {
+          localStorage.setItem(key, JSON.stringify(saved));
+        } catch {}
+        renderState();
+      });
+    });
+  }
+</script>

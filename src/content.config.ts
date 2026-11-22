@@ -6,6 +6,11 @@ const faqSchema = z.object({
   a: z.string(),
 });
 
+const sourceSchema = z.object({
+  label: z.string(),
+  url: z.string().url(),
+});
+
 const posts = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/posts' }),
   schema: z.object({
@@ -45,6 +50,7 @@ const posts = defineCollection({
     faqsKo: z.array(faqSchema).optional(),
     faqsJp: z.array(faqSchema).optional(),
     faqsEs: z.array(faqSchema).optional(),
+    sources: z.array(sourceSchema).optional(),
   }),
 });
 

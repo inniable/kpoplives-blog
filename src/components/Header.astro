@@ -53,6 +53,15 @@ const langLabels: Record<Lang, string> = {
     </nav>
 
     <div class="header-actions">
+      <button
+        type="button"
+        id="theme-toggle"
+        class="theme-btn"
+        aria-label="Toggle light or dark theme"
+        title="Dark / Light Mode"
+      >
+        ☀️
+      </button>
       <nav class="lang-switch" aria-label="Language Switcher" translate="no">
         {LANGS.map((code) => (
           <a
@@ -137,6 +146,31 @@ const langLabels: Record<Lang, string> = {
     color: var(--text-primary);
     background: rgba(255, 46, 147, 0.14);
     box-shadow: inset 0 0 0 1px rgba(255, 46, 147, 0.35);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .theme-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    font-size: 0.92rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: var(--transition);
+  }
+
+  .theme-btn:hover {
+    border-color: var(--accent-cyan);
+    transform: rotate(12deg);
   }
 
   .lang-switch {

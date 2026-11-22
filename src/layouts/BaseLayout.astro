@@ -88,6 +88,16 @@ const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="KPOP LIVES RSS" href="/rss.xml" />
     <title>{fullTitle}</title>
+    <script is:inline>
+      (function () {
+        try {
+          const t = localStorage.getItem('kpoplives-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
 
     {structuredDataList.map((schema) => (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -131,6 +141,27 @@ const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
           e.preventDefault();
           document.activeElement.click();
         }
+      });
+
+      // Dark / Light theme toggle
+      document.addEventListener('DOMContentLoaded', () => {
+        const themeBtn = document.getElementById('theme-toggle');
+        if (!themeBtn) return;
+        const syncIcon = () => {
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+          themeBtn.textContent = isLight ? '🌙' : '☀️';
+          themeBtn.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+        };
+        syncIcon();
+        themeBtn.addEventListener('click', () => {
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+          const next = isLight ? 'dark' : 'light';
+          document.documentElement.setAttribute('data-theme', next);
+          try {
+            localStorage.setItem('kpoplives-theme', next);
+          } catch (e) {}
+          syncIcon();
+        });
       });
     </script>
   </body>
