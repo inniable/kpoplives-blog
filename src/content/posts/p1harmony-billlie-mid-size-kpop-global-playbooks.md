@@ -18,6 +18,8 @@ readTimeEs: "4 min de lectura"
 tags: ["P1Harmony", "Billlie", "Mid-Size Labels", "Rookies", "Column"]
 coverImage: "/images/cover-billlie-p1harmony.webp"
 coverCredit: "Photo by SBS Radio 에라오 / Wikimedia Commons (CC BY 3.0)"
+youtubeId: "pdqij5LE7Hc"
+youtubeTitle: "P1Harmony (피원하모니) 'BLOW UP' Official MV"
 featured: false
 summaryEn: "Outside K-Pop's Big 4, FNC's P1Harmony and Mystic Story's Billlie prove that long-term international longevity comes from two distinct pillars—relentless overseas live touring and uncompromising conceptual artistry—while 2026 rookies like ALPHA DRIVE ONE climb brand reputation charts."
 summaryKo: "Big 4 대형 기획사 밖에서 장기적인 글로벌 팬덤을 유지하는 두 가지 대표 모델이 있습니다. 북미 투어를 중심으로 라이브 신뢰를 쌓은 P1Harmony(FNC)와 독보적 서사 미학을 지켜온 Billlie(미스틱스토리), 그리고 11월 신인 브랜드 평판에 이름을 올린 ALPHA DRIVE ONE 등 2026년 신예 흐름을 짚어봅니다."

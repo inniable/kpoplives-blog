@@ -18,6 +18,8 @@ readTimeEs: "3 min de lectura"
 tags: ["Yeonjun", "Soyeon", "MAMA 2026", "Soloists", "News"]
 coverImage: "/images/cover-mama-yeonjun-soyeon.webp"
 coverCredit: "Photo by Kinocine PARKJAEHWAN / Wikimedia Commons (CC BY-SA 4.0)"
+youtubeId: "1T9tLMh99Wo"
+youtubeTitle: "YEONJUN (연준) 'GGUM' Official MV — HYBE LABELS"
 featured: false
 summaryEn: "At the 2026 MAMA Awards in Osaka, TXT's Yeonjun won Best Male Artist and (G)I-DLE's Soyeon claimed Best Female Artist—spotlighting how fourth-generation group aces are flourishing simultaneously as boundary-pushing solo stars."
 summaryKo: "오사카 2026 MAMA Awards에서 TXT 연준이 베스트 남자 아티스트상, (G)I-DLE 소연이 베스트 여자 아티스트상을 수상했습니다. 팀 활동과 솔로 아티스트로서의 독자적 역량을 동시에 증명한 두 아티스트의 수상 의미를 정리합니다."

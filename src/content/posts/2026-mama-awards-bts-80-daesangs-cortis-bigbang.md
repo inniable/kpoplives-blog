@@ -18,6 +18,8 @@ readTimeEs: "4 min de lectura"
 tags: ["MAMA 2026", "BTS", "CORTIS", "BIGBANG", "News"]
 coverImage: "/images/cover-2026-mama-bts.webp"
 coverCredit: "Photo by I DARE U JK / Wikimedia Commons (CC BY 3.0)"
+youtubeId: "b4iVv91Z6lY"
+youtubeTitle: "BTS (방탄소년단) 'SWIM' Official MV — HYBE LABELS"
 featured: true
 summaryEn: "The 2026 MAMA Awards wrapped its two-night run at Osaka's Kyocera Dome (Nov. 20–21) with BTS taking five trophies—including Artist of the Year (8th time) and Album of the Year ('ARIRANG') for 80 career Daesangs—while breakout act CORTIS captured Song of the Year ('RedRed') and ENHYPEN won Fans' Choice of the Year."
 summaryKo: "11월 20~21일 일본 오사카 교세라돔에서 열린 2026 MAMA Awards에서 BTS가 올해의 아티스트(역대 8회)·올해의 앨범('ARIRANG') 등 5관왕(통산 80번째 대상)을 석권했습니다. 신예 CORTIS가 'RedRed'로 올해의 노래 대상을, ENHYPEN이 Fans' Choice of the Year를, BIGBANG이 Music Visionary of the Year를 수상하며 세대를 아우르는 축제를 완성했습니다."

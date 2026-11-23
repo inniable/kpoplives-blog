@@ -18,6 +18,8 @@ readTimeEs: "4 min de lectura"
 tags: ["K-Indie", "KMLIA", "Indie Labels", "Music Rights", "Column"]
 coverImage: "/images/cover-korean-indie-hongdae.webp"
 coverCredit: "Photo by Ken Eckert / Wikimedia Commons (CC BY-SA 4.0)"
+youtubeId: "zr2Ma6DAcg0"
+youtubeTitle: "Seoul Music Forum 2026 Highlights — Kindie Lounge (KMLIA)"
 featured: false
 summaryEn: "While stadium K-Pop grabs global headlines, South Korea's independent music ecosystem is quietly scaling up: through the Korean Music Label Industry Association's (KMLIA) 'Kindy Lounge' showcases and November 2026 international rights forums, labels like Mound Media and Your Summer are building direct global pathways."
 summaryKo: "스타디움 K-POP 아이돌이 글로벌 헤드라인을 장식하는 사이, 한국 인디·독립 레이블 생태계도 조용히 글로벌 확장에 속도를 내고 있습니다. 한국음악레이블산업협회(KMLIA)의 'Kindy Lounge' 쇼케이스와 11월 글로벌 음악 권리 포럼을 중심으로, Mound Media·Your Summer 등 독립 레이블이 해외 유통과 저작권 시장을 개척하는 흐름을 조명합니다."

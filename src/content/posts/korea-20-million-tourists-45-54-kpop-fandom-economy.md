@@ -18,6 +18,8 @@ readTimeEs: "5 min de lectura"
 tags: ["K-Tourism", "Fandom Economy", "K-Culture", "FANOMENON 2027", "Culture"]
 coverImage: "/images/cover-korea-20m-tourism.webp"
 coverCredit: "Photo by Frank Schulenburg / Wikimedia Commons (CC BY-SA 4.0)"
+youtubeId: "3P1CnWI62Ik"
+youtubeTitle: "Feel the Rhythm of KOREA: SEOUL — VISITKOREA"
 featured: false
 summaryEn: "In November 2026, South Korea surpassed 20 million annual foreign visitors for the first time—driven by K-Pop dance classes, cultural tourism, and Korean language immersion—while Billboard data reveals that high-spending 45–54 fans are reshaping album box sets and concert travel alongside plans for FANOMENON 2027."
 summaryKo: "2026년 11월 한국이 사상 처음으로 연간 방한 외국인 관광객 2,000만 명을 돌파했습니다. K-POP 댄스 클래스, 지방 문화 투어, 한국어 학습 열풍이 관광을 견인하는 가운데, 빌보드 데이터는 45~54세 중장년층 팬덤이 음반 박스셋과 해외 콘서트 여행의 핵심 소비층으로 부상했음을 보여줍니다. 팬덤 자체를 기리는 'FANOMENON 2027' 구상까지 함께 짚어봅니다."
