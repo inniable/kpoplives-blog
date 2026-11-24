@@ -61,6 +61,11 @@ faqsEs:
     a: "Chaeryeong lanzó su primer miniálbum en solitario 'Lovesick' el 9 de noviembre de 2026."
   - q: "¿En qué canción de 'Lovesick' tiene créditos de composición Chaeryeong?"
     a: "Chaeryeong figura en los créditos de la cara B 'Favorite Reason'."
+sources:
+  - label: "JYP Entertainment Official YouTube — CHAERYEONG 'Lovesick' Official MV"
+    url: "https://www.youtube.com/watch?v=pe-rk1ekb4w"
+  - label: "JYP Entertainment Official Artist News"
+    url: "https://www.jype.com/"
 ---
 
 For years, **ITZY's Chaeryeong** has been admired as one of fourth-generation K-Pop's most fluid, expressive dancers—a performer whose elegance often anchored ITZY's high-voltage stage energy. On November 9, with the release of her first solo mini-album ***Lovesick***, she stepped center stage on her own terms and revealed an artistic voice that feels intimate, poised, and unmistakably hers.

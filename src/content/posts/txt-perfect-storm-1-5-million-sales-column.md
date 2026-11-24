@@ -61,6 +61,11 @@ faqsEs:
     a: "El álbum superó los 1,5 millones de copias en solo 48 horas, además de liderar las listas de iTunes a nivel mundial."
   - q: "¿Por qué es relevante este récord a finales de 2026?"
     a: "Demuestra que, pese a la estabilización del mercado físico tras el boom pospandemia, los grupos consolidados con gran cohesión artística mantienen una demanda global masiva."
+sources:
+  - label: "HYBE LABELS Official YouTube — TXT 'Angel Bite' Official MV"
+    url: "https://www.youtube.com/watch?v=M9G4guYg-i8"
+  - label: "Hanteo Chart Official Album Sales"
+    url: "https://www.hanteochart.com/"
 ---
 
 Every few months, industry observers wonder whether K-Pop's golden era of million-seller physical albums has finally plateaued. Then a release like **Tomorrow X Together's (TXT)** ***PERFECT STORM*** arrives and resets the conversation in 48 hours.

@@ -18,6 +18,8 @@ readTimeEs: "3 min de lectura"
 tags: ["BESTie", "Billboard Global 200", "Viral Revival", "News"]
 coverImage: "/images/cover-bestie-love-options.webp"
 coverCredit: "Photo by Oldlady / Wikimedia Commons (CC BY 4.0)"
+youtubeId: "NPqtL1dtrlA"
+youtubeTitle: "[MV] BESTie(베스티) _ Love Options(연애의 조건) — 1theK"
 featured: false
 summaryEn: "Thirteen years after its original 2013 release, former K-Pop girl group BESTie's upbeat single 'Love Options' has made a surprise debut at No. 145 on the Billboard Global 200 (chart dated November 21, 2026), propelled by a fan-led viral resurgence across short-form video platforms."
 summaryKo: "걸그룹 BESTie가 2013년 발표한 대표곡 '연애의 조건(Love Options)'이 발매 13년 만에 2026년 11월 21일 자 빌보드 글로벌 200 차트 145위로 깜짝 데뷔했습니다. 글로벌 SNS와 팬 주도의 역주행이 K-POP 과거 명곡에 새 생명을 불어넣고 있습니다."

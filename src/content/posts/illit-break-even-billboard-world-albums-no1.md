@@ -61,6 +61,11 @@ faqsEs:
     a: "El quinto miniálbum de ILLIT, 'BREAK EVEN' (con el sencillo 'You're Under Arrest'), alcanzó el puesto n.º 1 en la lista Billboard World Albums."
   - q: "¿Por qué es clave este logro en su quinto miniálbum?"
     a: "Confirma que ILLIT ha pasado de ser un éxito viral debutante a convertirse en una fuerza global constante dentro de la quinta generación."
+sources:
+  - label: "HYBE LABELS Official YouTube — ILLIT 'You're Under Arrest' Official MV"
+    url: "https://www.youtube.com/watch?v=V2V9-9VhYJo"
+  - label: "Billboard World Albums Official Chart"
+    url: "https://www.billboard.com/charts/world-albums/"
 ---
 
 Breaking out with a viral debut hit is thrilling; turning that early spark into a **fifth consecutive era of chart dominance** is where real pop longevity begins. With their fifth mini-album ***BREAK EVEN***—anchored by the punchy title track *"You're Under Arrest"*—**ILLIT** just claimed **No. 1 on the Billboard World Albums chart**, offering a textbook study in fifth-generation staying power.

@@ -18,6 +18,8 @@ readTimeEs: "5 min de lectura"
 tags: ["Mid-Size Labels", "tripleS", "Kiss of Life", "RESCENE", "Culture"]
 coverImage: "/images/cover-midsize-triples.webp"
 coverCredit: "Photo by K-POPIT 케이팝잇 / Wikimedia Commons (CC BY 3.0)"
+youtubeId: "IajeQM00yfE"
+youtubeTitle: "KISS OF LIFE (키스오브라이프) 'Sticky' Official Music Video — KISS OF LIFE"
 featured: false
 summaryEn: "At 2026's major year-end award shows (KGMA, MMA, AAA), mid-size agency powerhouses Kiss of Life (S2), tripleS (Modhaus), and rising sensory-pop group RESCENE (The Muze) stand shoulder-to-shoulder with Big 4 titans—proving creative clarity can outperform corporate budgets."
 summaryKo: "2026년 연말 주요 시상식(KGMA·MMA·AAA) 무대에서 S2의 Kiss of Life, 모드하우스의 tripleS, 더뮤즈의 RESCENE 등 중소기획사 그룹들이 대형 기획사 그룹들과 당당히 어깨를 나란히 하고 있습니다. 자본의 한계를 뛰어넘은 세 회사의 독창적 전략을 해부합니다."
@@ -59,6 +61,11 @@ faqsEs:
     a: "S2 Entertainment (Kiss of Life), Modhaus (tripleS) y The Muze (RESCENE) sobresalen junto al referente global KQ Entertainment (ATEEZ)."
   - q: "¿Cómo compiten los sellos medianos contra el presupuesto de las Big 4?"
     a: "Apostando por agilidad creativa: excelencia vocal en directo, ecosistemas donde los fans votan subunidades y una curaduría musical altamente reconocible."
+sources:
+  - label: "KISS OF LIFE Official YouTube Channel"
+    url: "https://www.youtube.com/watch?v=IajeQM00yfE"
+  - label: "Billboard K-Pop News & Industry Analysis"
+    url: "https://www.billboard.com/c/music/pop/k-pop/"
 ---
 
 For years, K-Pop's global narrative was framed almost exclusively around the **Big 4**—HYBE, SM, JYP, and YG. Yet scan the stages of November 2026's major year-end award ceremonies—from the **Korea Grand Music Awards (KGMA)** to the **Melon Music Awards (MMA)** and **Asia Artist Awards (AAA)**—and a different reality jumps off the screen.

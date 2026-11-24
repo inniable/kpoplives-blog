@@ -30,10 +30,35 @@ const {
 } = Astro.props;
 
 const site = Astro.site ?? new URL('https://kpoplives-blog.jane2036.workers.dev');
-const fullTitle =
-  title === 'KPOP LIVES'
-    ? `KPOP LIVES — ${UI[lang].home.eyebrow}`
-    : `${title} | KPOP LIVES`;
+
+function buildSerpTitle(rawTitle: string, currentLang: Lang): string {
+  if (rawTitle === 'KPOP LIVES') {
+    return `KPOP LIVES — ${UI[currentLang].home.eyebrow}`;
+  }
+  const suffix = ' | KPOP LIVES';
+  const maxBaseLen = currentLang === 'ko' || currentLang === 'jp' ? 38 : 56;
+  const trimmed = rawTitle.trim();
+  if (trimmed.length <= maxBaseLen) {
+    return `${trimmed}${suffix}`;
+  }
+  // Prefer breaking cleanly at a natural separator (— / : / —) if within reasonable length
+  const sepIdx = Math.max(
+    trimmed.lastIndexOf(' — ', maxBaseLen),
+    trimmed.lastIndexOf('——', maxBaseLen),
+    trimmed.lastIndexOf(': ', maxBaseLen),
+    trimmed.lastIndexOf('：', maxBaseLen)
+  );
+  if (sepIdx >= Math.floor(maxBaseLen * 0.55)) {
+    return `${trimmed.slice(0, sepIdx).trim()}${suffix}`;
+  }
+  // Otherwise break at last space (or char limit for CJK) without awkward trailing punctuation
+  const slice = trimmed.slice(0, maxBaseLen);
+  const spaceIdx = currentLang === 'jp' ? -1 : slice.lastIndexOf(' ');
+  const cut = spaceIdx >= Math.floor(maxBaseLen * 0.65) ? slice.slice(0, spaceIdx) : slice;
+  return `${cut.replace(/[\s,:;\-—·&]+$/u, '')}…${suffix}`;
+}
+
+const fullTitle = buildSerpTitle(title, lang);
 
 const canonicalUrl = new URL(Astro.url.pathname, site).toString();
 const ogImageUrl = new URL(image, site).toString();

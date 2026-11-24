@@ -61,6 +61,11 @@ faqsEs:
     a: "La próxima gira de conciertos en solitario de Taeyeon se titula 'F.L.Y.'"
   - q: "¿Qué gira mundial anunció 'KPop Demon Hunters' (HUNTR/X) para 2027?"
     a: "Anunciaron la gira mundial 'GOLDEN' 2027, que incluye grandes fechas en arenas del Reino Unido para octubre del próximo año."
+sources:
+  - label: "SMTOWN Official YouTube — TAEYEON 'To. X' Official MV"
+    url: "https://www.youtube.com/watch?v=5_n6t9G2TUQ"
+  - label: "Billboard Live Touring & K-Pop Coverage"
+    url: "https://www.billboard.com/c/music/pop/k-pop/"
 ---
 
 Two concert announcements landed in K-Pop newsfeeds this week, and at first glance they couldn't look more different. On one side stands **Taeyeon**, one of Korean pop's most revered live vocalists, revealing stops for her upcoming solo concert tour ***F.L.Y.*** On the other stands ***KPop Demon Hunters* (HUNTR/X)**—the animated/virtual pop phenomenon—unveiling its **2027 *GOLDEN* world tour**, complete with major UK arena dates next October.

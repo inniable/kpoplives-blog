@@ -18,6 +18,8 @@ readTimeEs: "5 min de lectura"
 tags: ["K-Culture", "Seongsu-dong", "Fashion", "K-Beauty", "Fandom Economy"]
 coverImage: "/images/cover-seongsu-popup.webp"
 coverCredit: "Photo by CartoonChess / Wikimedia Commons (CC BY-SA 4.0)"
+youtubeId: "_GCRrHg7ON4"
+youtubeTitle: "Seoul Local Travel Vlog: Seongsu-dong Culture & Pop-Up Guide — VisitSeoul TV"
 featured: false
 summaryEn: "K-Pop's cultural gravity now extends far beyond music charts: idols generate millions in Earned Media Value for luxury houses like Prada and Louis Vuitton, while Seoul's Seongsu-dong has transformed into the world's fastest-rotating laboratory for K-Pop, K-Beauty, and experiential pop-up retail."
 summaryKo: "K-POP의 문화적 중력은 이제 음원 차트를 훨씬 넘어섰습니다. 카리나(Prada)·리사(Louis Vuitton) 등 글로벌 앰배서더들이 럭셔리 패션위크의 미디어 가치를 재편하는 한편, 서울 성수동은 K-POP·K-Beauty·명품 하우스가 1~2주 단위로 실험하는 전 세계 체험형 리테일의 심장부로 진화했습니다."

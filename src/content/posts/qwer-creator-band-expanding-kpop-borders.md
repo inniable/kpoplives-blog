@@ -18,6 +18,8 @@ readTimeEs: "4 min de lectura"
 tags: ["QWER", "K-Band", "Indie", "Culture"]
 coverImage: "/images/cover-qwer-band.webp"
 coverCredit: "Photo by K-POPIT 케이팝잇 / Wikimedia Commons (CC BY 3.0)"
+youtubeId: "ImuWa3SJulY"
+youtubeTitle: "QWER '고민중독 (T.B.H)' Official MV — QWER"
 featured: false
 summaryEn: "Backed by creator-led Tamago Production and 3Y Corporation, hybrid girl band QWER has turned J-rock-infused melodies and transparent YouTube storytelling into sustained Melon chart power and major 2026 K-Pop award show appearances."
 summaryKo: "크리에이터 기반 레이블 타마고 프로덕션(3Y코퍼레이션)에서 탄생한 걸밴드 QWER이 J-록 감성과 K-POP 멜로디, 유튜브 기반 성장 서사를 결합해 멜론 차트 장기 흥행과 2026년 주요 연말 시상식 무대를 석권하며 K-POP의 장르적 경계를 넓히고 있습니다."
@@ -59,6 +61,11 @@ faqsEs:
     a: "QWER es una banda femenina formada por Tamago Production (3Y Corporation) que nació a través de contenido digital en YouTube y fusiona la energía del J-rock con melodías K-Pop."
   - q: "¿Cómo está transformando QWER la industria en 2026?"
     a: "Al mantenerse fuerte en Melon y compartir escenario con grandes grupos idol en las galas de 2026, demuestra que el K-Pop actual abarca mucho más que el formato clásico de baile."
+sources:
+  - label: "QWER Official YouTube Channel — 'T.B.H (고민중독)' MV"
+    url: "https://www.youtube.com/watch?v=ImuWa3SJulY"
+  - label: "Melon Official Domestic Chart"
+    url: "https://www.melon.com/chart/"
 ---
 
 For decades, the word "K-Pop" conjured a very specific blueprint: years inside a corporate training basement, razor-sharp synchronized choreography, and a polished debut under an established entertainment house. In 2026, **QWER** has quietly torn up that rulebook—and invited an entire new audience to the party.
