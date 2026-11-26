@@ -37,4 +37,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 613a2cb388714a83d05acabd327fc7b4
-          command: deploy --name kpoplives-blog --assets=./dist --compatibility-date=2026-11-21
+          command: deploy

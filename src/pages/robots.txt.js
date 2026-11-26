@@ -1,5 +1,5 @@
 export async function GET(context) {
-  const site = context.site ?? new URL('https://kpoplives-blog.jane2036.workers.dev');
+  const site = context.site ?? new URL('https://kpoplives.net');
   const sitemapUrl = new URL('/sitemap-index.xml', site).toString();
 
   const body = [

@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { remarkBilingual } from './src/plugins/remark-bilingual.mjs';
 
-const SITE_URL = process.env.SITE_URL || 'https://kpoplives-blog.jane2036.workers.dev';
+const SITE_URL = process.env.SITE_URL || 'https://kpoplives.net';
 
 export default defineConfig({
   site: SITE_URL,
