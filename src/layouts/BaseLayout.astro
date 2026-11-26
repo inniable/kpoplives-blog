@@ -80,7 +80,7 @@ const structuredDataList = jsonLd
     : [jsonLd]
   : [defaultWebsiteLd];
 
-const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
+const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT || 'ca-pub-2099069564833513';
 ---
 
 <!doctype html>
@@ -129,11 +129,14 @@ const adsenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT;
     ))}
 
     {adsenseClient && (
-      <script
-        async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
-        crossorigin="anonymous"
-      ></script>
+      <>
+        <meta name="google-adsense-account" content={adsenseClient} />
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClient}`}
+          crossorigin="anonymous"
+        ></script>
+      </>
     )}
   </head>
   <body>
