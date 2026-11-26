@@ -28,7 +28,7 @@ jobs:
       - name: Build Astro static site
         run: npm run build
         env:
-          SITE_URL: ${{ vars.SITE_URL }}
+          SITE_URL: https://kpoplives.net
           PUBLIC_ADSENSE_CLIENT: ${{ vars.PUBLIC_ADSENSE_CLIENT }}
           PUBLIC_NEWSLETTER_ENDPOINT: ${{ vars.PUBLIC_NEWSLETTER_ENDPOINT }}
 
@@ -37,4 +37,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 613a2cb388714a83d05acabd327fc7b4
-          command: deploy
+          command: deploy --name kpoplives-blog --assets=./dist --compatibility-date=2026-11-21
